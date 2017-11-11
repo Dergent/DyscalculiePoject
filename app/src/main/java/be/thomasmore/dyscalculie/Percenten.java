@@ -1,7 +1,9 @@
 package be.thomasmore.dyscalculie;
 
-import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -13,14 +15,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+
+public class Percenten extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_percenten);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -81,8 +85,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.percentages) {
-            Intent intent = new Intent(MainActivity.this, Percenten.class);
-            startActivity(intent);
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -100,5 +103,19 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void calculate_onClick(View v) {
+        TextView tOorspronkelijkePrijs = (TextView) findViewById(R.id.oorspronkelijkePrijs);
+        TextView tPercentage = (TextView) findViewById(R.id.percentage);
+        TextView tNieuwePrijs = (TextView) findViewById(R.id.nieuwePrijs);
 
+        int oorspronkelijkePrijs = Integer.parseInt(tOorspronkelijkePrijs.getText().toString());
+        double percentage = Integer.parseInt(tPercentage.getText().toString());
+        double nieuwePrijs = oorspronkelijkePrijs * (percentage / 100);
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+
+        tNieuwePrijs.setText(decimalFormat.format(nieuwePrijs));
+
+    }
 }
