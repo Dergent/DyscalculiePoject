@@ -8,9 +8,9 @@
             android:title="Solden berekenen"
             />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/geldberekenen"
+            android:icon="@drawable/euro"
+            android:title="Geldberekeningen" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
