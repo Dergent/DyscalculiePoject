@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.percentages) {
             replaceFragment(new PercentenFragment());
-        } else if (id == R.id.nav_gallery) {
-
+        } else if (id == R.id.geldberekenen) {
+            replaceFragment(new GeldberekenenFragment());
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
