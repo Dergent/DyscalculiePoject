@@ -5,7 +5,7 @@
         <item
             android:id="@+id/percentages"
             android:icon="@drawable/percentage"
-            android:title="Percentages"
+            android:title="Solden berekenen"
             />
         <item
             android:id="@+id/nav_gallery"
