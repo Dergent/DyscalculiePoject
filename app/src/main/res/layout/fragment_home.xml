@@ -1,0 +1,104 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="be.thomasmore.dyscalculie.HomeFragment">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/solden"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/solden" />
+            <Button
+                android:id="@+id/wisselgeld"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/wisselgeld" />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/geldTellen"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/geldTellen" />
+            <Button
+                android:id="@+id/tijdBerekenen"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/tijdBerekenen" />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/datumsBerekenen"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/datumsBerekenen" />
+            <Button
+                android:id="@+id/gewichtOmzetten"
+                android:padding="0dp"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/gewichtOmzetten" />
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/volumeOmzetten"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/volumeOmzetten" />
+            <Button
+                android:id="@+id/afstandenOmzetten"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="0.5"
+                android:text="@string/afstandenOmzetten" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

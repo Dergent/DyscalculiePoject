@@ -6,6 +6,13 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="solden">Solden</string>
+    <string name="wisselgeld">Wisselgeld berekenen</string>
+    <string name="geldTellen">Geld tellen</string>
+    <string name="tijdBerekenen">Tijd berekenen</string>
+    <string name="datumsBerekenen">Datums berekenen</string>
+    <string name="gewichtOmzetten">Gewicht Omzetten</string>
+    <string name="volumeOmzetten">Volume omzetten</string>
+    <string name="afstandenOmzetten">Afstanden omzetten</string>
 </resources>
