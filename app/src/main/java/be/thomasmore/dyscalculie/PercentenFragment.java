@@ -33,11 +33,12 @@ public class PercentenFragment extends Fragment {
         TextView tPercentage = getView().findViewById(R.id.percentage);
         TextView tNieuwePrijs = getView().findViewById(R.id.nieuwePrijs);
 
-        int oorspronkelijkePrijs = Integer.parseInt(tOorspronkelijkePrijs.getText().toString());
-        double percentage = Integer.parseInt(tPercentage.getText().toString());
-        double nieuwePrijs = oorspronkelijkePrijs * (percentage / 100);
+        float oorspronkelijkePrijs = Float.parseFloat(tOorspronkelijkePrijs.getText().toString());
+        float percentage = Float.parseFloat(tPercentage.getText().toString());
+        float nieuwePrijs = oorspronkelijkePrijs * (1 - (percentage / 100));
 
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
+
 
         tNieuwePrijs.setText(decimalFormat.format(nieuwePrijs));
 
