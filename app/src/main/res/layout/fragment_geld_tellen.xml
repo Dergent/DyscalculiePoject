@@ -20,37 +20,42 @@
                     android:id="@+id/relativeLayout1cent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/afbeelding1cent"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:paddingLeft="10dp"
-                            android:scaleType="fitStart"
-                            android:src="@drawable/cent1" />
-                        <ImageView
-                            android:id="@+id/plus1"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_toRightOf="@id/afbeelding1cent"
-                            android:layout_centerVertical="true"
-                            android:paddingLeft="5dp"
-                            android:src="@drawable/plus"/>
-                        <EditText
-                            android:id="@+id/hoeveel1cent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/plus1"
-                            android:layout_centerVertical="true"
-                            android:textSize="35sp"
-                            android:text="0"
-                            android:inputType="number"
-                            android:layout_gravity="center_horizontal"/>
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_toRightOf="@id/hoeveel1cent"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/minus"/>
+                    <ImageView
+                        android:id="@+id/afbeelding1cent"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:paddingLeft="10dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/cent1" />
+                    <ImageView
+                        android:id="@+id/plus1"
+                        android:tag="plus1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/afbeelding1cent"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
+                    <EditText
+                        android:id="@+id/hoeveel1cent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/plus1"
+                        android:layout_centerVertical="true"
+                        android:textSize="35sp"
+                        android:text="0"
+                        android:inputType="number"
+                        android:layout_gravity="center_horizontal"/>
+                    <ImageView
+                        android:id="@+id/minus1"
+                        android:tag="minus1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/hoeveel1cent"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -65,12 +70,14 @@
                         android:src="@drawable/cent2" />
                     <ImageView
                         android:id="@+id/plus2"
+                        android:tag="plus1"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_toRightOf="@id/afbeelding2cent"
                         android:layout_centerVertical="true"
                         android:paddingLeft="5dp"
-                        android:src="@drawable/plus"/>
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel2cent"
                         android:layout_width="wrap_content"
@@ -82,11 +89,14 @@
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
+                        android:id="@+id/minus2"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:tag="minus1"
                         android:layout_toRightOf="@id/hoeveel2cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -373,6 +383,186 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_toRightOf="@id/hoeveel10euro"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/minus"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout20euro">
+                    <ImageView
+                        android:id="@+id/afbeelding20euro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:paddingLeft="10dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/euro20" />
+                    <ImageView
+                        android:id="@+id/plus20euro"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/afbeelding20euro"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"/>
+                    <EditText
+                        android:id="@+id/hoeveel20euro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/plus20euro"
+                        android:layout_centerVertical="true"
+                        android:textSize="35sp"
+                        android:text="0"
+                        android:inputType="number"
+                        android:layout_gravity="center_horizontal"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/hoeveel20euro"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/minus"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout50euro">
+                    <ImageView
+                        android:id="@+id/afbeelding50euro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:paddingLeft="10dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/euro50" />
+                    <ImageView
+                        android:id="@+id/plus50euro"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/afbeelding50euro"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"/>
+                    <EditText
+                        android:id="@+id/hoeveel50euro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/plus50euro"
+                        android:layout_centerVertical="true"
+                        android:textSize="35sp"
+                        android:text="0"
+                        android:inputType="number"
+                        android:layout_gravity="center_horizontal"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/hoeveel50euro"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/minus"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout100euro">
+                    <ImageView
+                        android:id="@+id/afbeelding100euro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:paddingLeft="10dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/euro100" />
+                    <ImageView
+                        android:id="@+id/plus100euro"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/afbeelding100euro"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"/>
+                    <EditText
+                        android:id="@+id/hoeveel100euro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/plus100euro"
+                        android:layout_centerVertical="true"
+                        android:textSize="35sp"
+                        android:text="0"
+                        android:inputType="number"
+                        android:layout_gravity="center_horizontal"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/hoeveel100euro"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/minus"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout200euro">
+                    <ImageView
+                        android:id="@+id/afbeelding200euro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:paddingLeft="10dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/euro200" />
+                    <ImageView
+                        android:id="@+id/plus200euro"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/afbeelding200euro"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"/>
+                    <EditText
+                        android:id="@+id/hoeveel200euro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/plus200euro"
+                        android:layout_centerVertical="true"
+                        android:textSize="35sp"
+                        android:text="0"
+                        android:inputType="number"
+                        android:layout_gravity="center_horizontal"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/hoeveel200euro"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/minus"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout500euro">
+                    <ImageView
+                        android:id="@+id/afbeelding500euro"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:paddingLeft="10dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/euro500" />
+                    <ImageView
+                        android:id="@+id/plus500euro"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/afbeelding500euro"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"/>
+                    <EditText
+                        android:id="@+id/hoeveel500euro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/plus500euro"
+                        android:layout_centerVertical="true"
+                        android:textSize="35sp"
+                        android:text="0"
+                        android:inputType="number"
+                        android:layout_gravity="center_horizontal"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/hoeveel500euro"
                         android:layout_centerVertical="true"
                         android:src="@drawable/minus"/>
                 </RelativeLayout>
