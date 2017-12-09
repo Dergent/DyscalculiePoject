@@ -116,6 +116,7 @@ public class GeldTellenFragment extends Fragment {
 
         Button button = view.findViewById(R.id.buttonCalculate);
         button.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v){
                 calculate_onClick(v);
             }
