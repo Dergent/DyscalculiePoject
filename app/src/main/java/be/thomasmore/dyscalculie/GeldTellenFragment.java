@@ -307,38 +307,38 @@ public class GeldTellenFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void calculate_onClick(View v){
-        float total;
+        double total;
 
         EditText cent1 = getView().findViewById(R.id.hoeveel1cent);
-        total = (Integer.parseInt(cent1.getText().toString()))/100;
+        total = (Double.parseDouble(cent1.getText().toString()))/100;
         EditText cent2 = getView().findViewById(R.id.hoeveel2cent);
-        total += (Integer.parseInt(cent2.getText().toString()))*2/100;
+        total += (Double.parseDouble(cent2.getText().toString()))*2/100;
         EditText cent5 = getView().findViewById(R.id.hoeveel5cent);
-        total += (Integer.parseInt(cent5.getText().toString()))*5/100;
+        total += (Double.parseDouble(cent5.getText().toString()))*5/100;
         EditText cent10 = getView().findViewById(R.id.hoeveel10cent);
-        total += (Integer.parseInt(cent10.getText().toString()))*10/100;
+        total += (Double.parseDouble(cent10.getText().toString()))*10/100;
         EditText cent20 = getView().findViewById(R.id.hoeveel20cent);
-        total += (Integer.parseInt(cent20.getText().toString()))*20/100;
+        total += (Double.parseDouble(cent20.getText().toString()))*20/100;
         EditText cent50 = getView().findViewById(R.id.hoeveel50cent);
-        total += (Integer.parseInt(cent50.getText().toString()))*50/100;
+        total += (Double.parseDouble(cent50.getText().toString()))*50/100;
         EditText euro1 = getView().findViewById(R.id.hoeveel1euro);
-        total += Integer.parseInt(euro1.getText().toString());
+        total += Double.parseDouble(euro1.getText().toString());
         EditText euro2 = getView().findViewById(R.id.hoeveel2euro);
-        total += Integer.parseInt(euro2.getText().toString())*2;
+        total += Double.parseDouble(euro2.getText().toString())*2;
         EditText euro5 = getView().findViewById(R.id.hoeveel5euro);
-        total += Integer.parseInt(euro5.getText().toString())*5;
+        total += Double.parseDouble(euro5.getText().toString())*5;
         EditText euro10 = getView().findViewById(R.id.hoeveel10euro);
-        total += Integer.parseInt(euro10.getText().toString())*10;
+        total += Double.parseDouble(euro10.getText().toString())*10;
         EditText euro20 = getView().findViewById(R.id.hoeveel20euro);
-        total += Integer.parseInt(euro20.getText().toString())*20;
+        total += Double.parseDouble(euro20.getText().toString())*20;
         EditText euro50 = getView().findViewById(R.id.hoeveel50euro);
-        total += Integer.parseInt(euro50.getText().toString())*50;
+        total += Double.parseDouble(euro50.getText().toString())*50;
         EditText euro100 = getView().findViewById(R.id.hoeveel100euro);
-        total += Integer.parseInt(euro100.getText().toString())*100;
+        total += Double.parseDouble(euro100.getText().toString())*100;
         EditText euro200 = getView().findViewById(R.id.hoeveel200euro);
-        total += Integer.parseInt(euro200.getText().toString())*200;
+        total += Double.parseDouble(euro200.getText().toString())*200;
         EditText euro500 = getView().findViewById(R.id.hoeveel500euro);
-        total += Integer.parseInt(euro500.getText().toString())*500;
+        total += Double.parseDouble(euro500.getText().toString())*500;
 
         TextView textView = getView().findViewById(R.id.totaal);
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
