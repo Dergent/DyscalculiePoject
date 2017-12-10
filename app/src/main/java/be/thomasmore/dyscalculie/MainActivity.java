@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        replaceFragment(new HomeFragment());
     }
 
     @Override
@@ -73,7 +76,11 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new PercentenFragment());
         } else if (id == R.id.geldberekenen) {
             replaceFragment(new GeldberekenenFragment());
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.hoofdmenu) {
+            replaceFragment(new HomeFragment());
+        }else if (id == R.id.tijdBerekenen) {
+            replaceFragment(new TijdBerekenenFragment());
+        }else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
 
@@ -95,6 +102,31 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.addToBackStack(fragment.toString());
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
+    }
+
+    public void onClickButton (View v) {
+        int id = v.getId();
+
+        if (id == R.id.solden) {
+            replaceFragment(new PercentenFragment());
+        } else if (id == R.id.wisselgeld) {
+            replaceFragment(new GeldberekenenFragment());
+        } else if (id == R.id.geldTellen) {
+
+        } else if (id == R.id.tijdBerekenen) {
+            replaceFragment(new TijdBerekenenFragment());
+        } else if (id == R.id.datumsBerekenen) {
+
+        } else if (id == R.id.gewichtOmzetten) {
+
+        } else if (id == R.id.volumeOmzetten) {
+
+        } else if (id == R.id.volumeOmzetten) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 
 

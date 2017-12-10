@@ -5,13 +5,13 @@
     tools:context="be.thomasmore.dyscalculie.HomeFragment">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
         android:orientation="vertical">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
@@ -23,13 +23,15 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/solden" />
+                android:text="@string/solden"
+                android:onClick="onClickButton"/>
             <Button
                 android:id="@+id/wisselgeld"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/wisselgeld" />
+                android:text="@string/wisselgeld"
+                android:onClick="onClickButton"/>
 
         </LinearLayout>
 
@@ -45,13 +47,16 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/geldTellen" />
+                android:text="@string/geldTellen"
+                android:onClick="onClickButton"/>
+
             <Button
                 android:id="@+id/tijdBerekenen"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/tijdBerekenen" />
+                android:text="@string/tijdBerekenen"
+                android:onClick="onClickButton"/>
 
         </LinearLayout>
 
@@ -67,14 +72,17 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/datumsBerekenen" />
+                android:text="@string/datumsBerekenen"
+                android:onClick="onClickButton"/>
+
             <Button
                 android:id="@+id/gewichtOmzetten"
                 android:padding="0dp"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/gewichtOmzetten" />
+                android:text="@string/gewichtOmzetten"
+                android:onClick="onClickButton"/>
 
         </LinearLayout>
 
@@ -90,13 +98,16 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/volumeOmzetten" />
+                android:text="@string/volumeOmzetten"
+                android:onClick="onClickButton"/>
+
             <Button
                 android:id="@+id/afstandenOmzetten"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
-                android:text="@string/afstandenOmzetten" />
+                android:text="@string/afstandenOmzetten"
+                android:onClick="onClickButton"/>
 
         </LinearLayout>
     </LinearLayout>
