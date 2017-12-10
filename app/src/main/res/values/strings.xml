@@ -16,13 +16,8 @@
     <string name="volumeOmzetten">Volume omzetten</string>
     <string name="afstandenOmzetten">Afstanden omzetten</string>
 
-<<<<<<< HEAD
     <!-- For Time -->
     <string name="beginTime">Begintijd</string>
     <string name="endTime">Eindtijd</string>
 
-=======
->>>>>>> master
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
