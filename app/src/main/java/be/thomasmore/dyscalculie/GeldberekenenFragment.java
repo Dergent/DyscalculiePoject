@@ -31,17 +31,17 @@ public class GeldberekenenFragment extends Fragment {
         TextView tTeBetalen = getView().findViewById(R.id.teBetalen);
         TextView tGegevenBedrag = getView().findViewById(R.id.gegevenBedrag);
         TextView tWisselgeld = getView().findViewById(R.id.wisselgeld);
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
-        int teBetalen = Integer.parseInt(tTeBetalen.getText().toString());
-        double gegevenBedrag = Integer.parseInt(tGegevenBedrag.getText().toString());
+        double teBetalen = Double.parseDouble(tTeBetalen.getText().toString());
+        double gegevenBedrag = Double.parseDouble(tGegevenBedrag.getText().toString());
         if (teBetalen <= gegevenBedrag) {
             double wisselgeld = gegevenBedrag - teBetalen;
-            DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
             tWisselgeld.setText(decimalFormat.format(wisselgeld));
         } else {
             double geldTeKort = teBetalen - gegevenBedrag;
-            String teKort = "Je komt :" + geldTeKort + " euro te kort!";
+            String teKort = "Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!";
             tWisselgeld.setText(teKort);
         }
     }

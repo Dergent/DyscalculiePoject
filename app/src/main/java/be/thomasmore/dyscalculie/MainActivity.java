@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new PercentenFragment());
         } else if (id == R.id.geldberekenen) {
             replaceFragment(new GeldberekenenFragment());
+<<<<<<< HEAD
         } else if (id == R.id.hoofdmenu) {
             replaceFragment(new HomeFragment());
         }else if (id == R.id.tijdBerekenen) {
@@ -84,6 +85,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
+=======
+        } else if (id == R.id.geldTellen) {
+            replaceFragment(new GeldTellenFragment());
+        } else if (id == R.id.datumsBerekenen) {
+            replaceFragment(new DatumsBerkenen());
+>>>>>>> master
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

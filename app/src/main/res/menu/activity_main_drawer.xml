@@ -21,13 +21,13 @@
             android:icon="@drawable/euro"
             android:title="Tijd berekenen" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/geldTellen"
+            android:icon="@drawable/geld"
+            android:title="Geld tellen" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/datumsBerekenen"
+            android:icon="@drawable/calendar"
+            android:title="Datums berkenen" />
     </group>
 
     <item android:title="Communicate">
