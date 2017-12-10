@@ -15,20 +15,9 @@ import android.widget.TimePicker;
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class TijdBerekenenFragment extends Fragment {
 
-    TimePicker beginTimePicker;
-    TimePicker endTimePicker;
-
-    public TijdBerekenenFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tijd_berekenen, container, false);
-
-        //=(TimePicker)getView().findViewById(R.id.beginTimePicker);
-        //TimePicker endTimePicker=(TimePicker)getView().findViewById(R.id.endTimePicker);
-
         final Button button = view.findViewById(R.id.buttonCalculate);
         button.setOnClickListener(new View.OnClickListener(){
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -37,109 +26,40 @@ public class TijdBerekenenFragment extends Fragment {
             }
         });
 
-        beginTimePicker=(TimePicker)view.findViewById(R.id.beginTimePicker);
+        TimePicker beginTimePicker = view.findViewById(R.id.beginTimePicker);
+        TimePicker endTimePicker = view.findViewById(R.id.endTimePicker);
         beginTimePicker.setIs24HourView(true);
-
-        endTimePicker=(TimePicker)view.findViewById(R.id.endTimePicker);
         endTimePicker.setIs24HourView(true);
 
         return view;
     }
 
     public void calculate(View v) {
-        /*int hour;
-        int minutes;
+        TimePicker beginTimePicker = getView().findViewById(R.id.beginTimePicker);
+        TimePicker endTimePicker = getView().findViewById(R.id.endTimePicker);
+        int hour = 0;
+        int minutes = 0;
         int beginHour = beginTimePicker.getHour();
         int beginMinutes = beginTimePicker.getMinute();
 
         int endHour = endTimePicker.getHour();
         int endMinutes = endTimePicker.getMinute();
 
-        TextView tijdverschil = (TextView) getView().findViewById(R.id.tijdverschil);
+        TextView tijdverschil = getView().findViewById(R.id.tijdverschil);
 
-        hour = endHour - beginHour;
-        minutes = endMinutes - beginMinutes;
-
-        if (beginMinutes > endMinutes){
-            hour--;
-            minutes = 60 - beginMinutes + endMinutes;
-        }
-
-        tijdverschil.setText("Het verschil is " + hour + " uur en "+ minutes + " minuten");
-
-        if (beginHour > endHour) {
-            tijdverschil.setText("De begin tijd is later dan de eind tijd");
+            if (beginHour <= endHour){
+                hour = endHour - beginHour;
+            }
+            if (beginMinutes <= endMinutes){
+                minutes = endMinutes - beginMinutes;
+            }
+            if (beginHour > endHour) {
+                hour = 24 - beginHour + endHour;
+            }
             if (beginMinutes > endMinutes) {
-                tijdverschil.setText("Het verschil is " + hour + "uur en "+ minutes + "minuten");
+                hour--;
+                minutes = 60 - beginMinutes + endMinutes;
             }
-        }
-
-        if (beginHour == endHour){
-            if (beginMinutes > endMinutes){
-                tijdverschil.setText("De begin tijd is later dan de eind tijd");
-            }
-        }*/
-
-
-        int hour;
-        int minutes;
-        int beginHour = beginTimePicker.getHour();
-        int beginMinutes = beginTimePicker.getMinute();
-
-        int endHour = endTimePicker.getHour();
-        int endMinutes = endTimePicker.getMinute();
-
-        TextView tijdverschil = (TextView) getView().findViewById(R.id.tijdverschil);
-
-        hour = endHour - beginHour;
-        minutes = endMinutes - beginMinutes;
-
-        if (beginMinutes > endMinutes){
-            hour--;
-            minutes = beginMinutes - endMinutes;
-        }
-
-        if (hour < 0){
-            int hourCounter=0;
-            while (!(endHour==beginHour)){
-                if (beginHour == 24){
-                    beginHour = 0;
-                }
-                beginHour++;
-                hourCounter++;
-            }
-            hour = hourCounter;
-            hour = 23 - beginHour + endHour;
-            tijdverschil.setText("Het verschil is " + hour + "uur en "+ minutes + "minuten \n" +
-                                    "(vandaag " + beginHour + ":" + beginMinutes + " en morgen " + endHour + ":" + endMinutes+")");
-        }
-        else{
-            tijdverschil.setText("Het verschil is " + hour + " uur en "+ minutes + " minuten");
-        }
-        if (beginHour == endHour && beginMinutes > endMinutes){
-            hour = 23;
-            minutes = 60 - beginMinutes + endMinutes;
-            tijdverschil.setText("Het verschil is " + hour + "uur en "+ minutes + "minuten \n" +
-                    "(vandaag " + beginHour + ":" + beginMinutes + " en morgen " + endHour + ":" + endMinutes+")");
-        }
-
-
-
-
-
-        if (beginHour > endHour) {
-            tijdverschil.setText("De begin tijd is later dan de eind tijd");
-            if (beginMinutes > endMinutes) {
-                tijdverschil.setText("Het verschil is " + hour + "uur en "+ minutes + "minuten");
-            }
-        }
-
-        if (beginHour == endHour){
-            if (beginMinutes > endMinutes){
-                tijdverschil.setText("De begin tijd is later dan de eind tijd");
-            }
-        }
+        tijdverschil.setText("Verstreken tijd: " + hour + " uur " + minutes + " minuten");
     }
-
-
 }
