@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GeldberekenenFragment extends Fragment {
 
     private TextToSpeech textToSpeech;
+    private Timer timer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,17 +40,65 @@ public class GeldberekenenFragment extends Fragment {
             }
         });
 
-        teBetalen.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+
+        teBetalen.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                textToSpeech.speak(teBetalen.getText().toString() + " euro", TextToSpeech.QUEUE_FLUSH, null);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (timer != null){
+                    timer.cancel();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        textToSpeech.speak(teBetalen.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                }, 600);
             }
         });
+
+        gegeven.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (timer != null){
+                    timer.cancel();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        textToSpeech.speak(gegeven.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                }, 600);
+            }
+        });
+
 
         gegeven.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                textToSpeech.speak(gegeven.getText().toString() + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                if (!hasFocus) {
+                    textToSpeech.speak(gegeven.getText().toString() + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                }
             }
         });
 
@@ -72,12 +125,12 @@ public class GeldberekenenFragment extends Fragment {
             double wisselgeld = gegevenBedrag - teBetalen;
 
             tWisselgeld.setText(decimalFormat.format(wisselgeld));
-            textToSpeech.speak(decimalFormat.format(wisselgeld) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+            textToSpeech.speak("Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
         } else {
             double geldTeKort = teBetalen - gegevenBedrag;
             String teKort = "Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!";
+            textToSpeech.speak("Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
             tWisselgeld.setText(teKort);
-            textToSpeech.speak(teKort + " euro", TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }

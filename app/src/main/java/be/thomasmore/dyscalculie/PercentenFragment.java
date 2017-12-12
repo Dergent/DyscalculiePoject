@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +16,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class PercentenFragment extends Fragment {
 
     private TextToSpeech textToSpeech;
+    private Timer timer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,17 +40,53 @@ public class PercentenFragment extends Fragment {
             }
         });
 
-        oPrijs.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        oPrijs.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                textToSpeech.speak(oPrijs.getText().toString() + " euro", TextToSpeech.QUEUE_FLUSH, null);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (timer != null) {
+                    timer.cancel();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        textToSpeech.speak(oPrijs.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                }, 600);
             }
         });
 
-        percentage.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        percentage.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                textToSpeech.speak(percentage.getText().toString() + " procent", TextToSpeech.QUEUE_FLUSH, null);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (timer != null) {
+                    timer.cancel();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        textToSpeech.speak(percentage.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                }, 600);
             }
         });
         button.setOnClickListener(new View.OnClickListener(){
@@ -71,7 +112,7 @@ public class PercentenFragment extends Fragment {
 
 
         tNieuwePrijs.setText(decimalFormat.format(nieuwePrijs));
-        textToSpeech.speak(decimalFormat.format(nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+        textToSpeech.speak("De nieuwe prijs is " + decimalFormat.format(nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
 
     }
 }
