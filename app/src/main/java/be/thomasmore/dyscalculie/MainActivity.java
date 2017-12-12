@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new GeldTellenFragment());
         } else if (id == R.id.datumsBerekenen) {
             replaceFragment(new DatumsBerkenen());
+        } else if (id == R.id.history) {
+            replaceFragment(new HistoryFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

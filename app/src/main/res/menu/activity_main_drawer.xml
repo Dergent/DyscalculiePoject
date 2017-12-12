@@ -14,7 +14,7 @@
         <item
             android:id="@+id/geldberekenen"
             android:icon="@drawable/euro"
-            android:title="Geldberekeningen" />
+            android:title="Geld berekeningen" />
 
         <item
             android:id="@+id/tijdBerekenen"
@@ -28,5 +28,10 @@
             android:id="@+id/datumsBerekenen"
             android:icon="@drawable/calendar"
             android:title="Datums berekenen" />
+
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/clock"
+            android:title="Historiek"/>
     </group>
 </menu>

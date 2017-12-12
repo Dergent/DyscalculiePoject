@@ -1,5 +1,6 @@
 package be.thomasmore.dyscalculie;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -110,6 +111,10 @@ public class DatumsBerkenen extends Fragment {
                 }
                 textView.setText("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.");
                 textToSpeech.speak("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.", TextToSpeech.QUEUE_FLUSH, null);
+                SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("datum", dag + " dagen " + maand + " maanden " + jaar + " jaar.");
+                editor.commit();
             }
         } else {
             textView.setText("De begindatum is voor de einddatum.");

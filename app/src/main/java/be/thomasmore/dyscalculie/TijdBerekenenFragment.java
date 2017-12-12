@@ -1,5 +1,6 @@
 package be.thomasmore.dyscalculie;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -19,6 +20,7 @@ import java.util.Locale;
 public class TijdBerekenenFragment extends Fragment {
 
     private TextToSpeech textToSpeech;
+    private HistoryFragment historyFragment = new HistoryFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -104,6 +106,11 @@ public class TijdBerekenenFragment extends Fragment {
             }
         tijdverschil.setText("Verstreken tijd: " + hour + " uur " + minutes + " min");
         textToSpeech.speak("Verstreken tijd: " + hour + " uur " + minutes + " min", TextToSpeech.QUEUE_FLUSH, null);
+
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("tijd", hour + " uur " + minutes + " min");
+        editor.commit();
     }
 
 }
