@@ -31,7 +31,7 @@ public class TijdBerekenenFragment extends Fragment {
             @Override
             public void onInit(int status){
                 if (status != TextToSpeech.ERROR) {
-                    textToSpeech.setLanguage(Locale.ENGLISH);
+                    textToSpeech.setLanguage(new Locale("nl_NL"));
                 }
             }
         });
@@ -46,14 +46,14 @@ public class TijdBerekenenFragment extends Fragment {
         beginTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                textToSpeech.speak(hourOfDay + " hour " + minute + " minutes", TextToSpeech.QUEUE_FLUSH, null);
+                textToSpeech.speak(hourOfDay + " uur " + minute + " min", TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
         endTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener(){
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                textToSpeech.speak(hourOfDay + " hour " + minute + " minutes", TextToSpeech.QUEUE_FLUSH, null);
+                textToSpeech.speak(hourOfDay + " uur " + minute + " min", TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
@@ -102,8 +102,8 @@ public class TijdBerekenenFragment extends Fragment {
                 hour = 0;
                 minutes = 0;
             }
-        tijdverschil.setText("Verstreken tijd: " + hour + " uur " + minutes + " minuten");
-        textToSpeech.speak("Passed time: " + hour + " hour " + minutes + " minutes", TextToSpeech.QUEUE_FLUSH, null);
+        tijdverschil.setText("Verstreken tijd: " + hour + " uur " + minutes + " min");
+        textToSpeech.speak("Verstreken tijd: " + hour + " uur " + minutes + " min", TextToSpeech.QUEUE_FLUSH, null);
     }
 
 }
