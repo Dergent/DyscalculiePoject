@@ -38,7 +38,7 @@ public class DatumsBerkenen extends Fragment {
 
             int jaar = eindDatum.getYear() - beginDatum.getYear();
 
-            if (beginDatum.getYear() == eindDatum.getYear() && (beginDatum.getMonth() > eindDatum.getMonth() || beginDatum.getDayOfMonth() > eindDatum.getDayOfMonth())){
+            if (beginDatum.getYear() == eindDatum.getYear() && (beginDatum.getMonth() >= eindDatum.getMonth() && beginDatum.getDayOfMonth() > eindDatum.getDayOfMonth())){
                 textView.setText("De begindatum is voor de einddatum.");
             } else {
                 if (eindDatum.getDayOfMonth() >= beginDatum.getDayOfMonth() && eindDatum.getMonth() >= beginDatum.getMonth()) {
