@@ -108,11 +108,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.wisselgeld) {
             replaceFragment(new GeldberekenenFragment());
         } else if (id == R.id.geldTellen) {
-
+            replaceFragment(new GeldTellenFragment());
         } else if (id == R.id.tijdBerekenen) {
             replaceFragment(new TijdBerekenenFragment());
         } else if (id == R.id.datumsBerekenen) {
-
+            replaceFragment(new DatumsBerkenen());
         } else if (id == R.id.gewichtOmzetten) {
 
         } else if (id == R.id.volumeOmzetten) {
