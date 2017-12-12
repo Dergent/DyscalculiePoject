@@ -24,6 +24,8 @@ public class TijdBerekenenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tijd_berekenen, container, false);
         final Button button = view.findViewById(R.id.buttonCalculate);
+        final TimePicker beginTime = view.findViewById(R.id.beginTimePicker);
+        final TimePicker endTime = view.findViewById(R.id.endTimePicker);
 
         textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -38,6 +40,20 @@ public class TijdBerekenenFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v){
                 calculate(v);
+            }
+        });
+
+        beginTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                textToSpeech.speak(hourOfDay + " hour " + minute + " minutes", TextToSpeech.QUEUE_FLUSH, null);
+            }
+        });
+
+        endTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener(){
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                textToSpeech.speak(hourOfDay + " hour " + minute + " minutes", TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
