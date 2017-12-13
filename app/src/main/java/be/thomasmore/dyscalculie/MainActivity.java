@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new GeldTellenFragment());
         } else if (id == R.id.datumsBerekenen) {
             replaceFragment(new DatumsBerkenen());
+        } else if (id == R.id.volumeOmzetten) {
+            replaceFragment(new VolumeFragment());
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -112,15 +114,15 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.wisselgeld) {
             replaceFragment(new GeldberekenenFragment());
         } else if (id == R.id.geldTellen) {
-
+            replaceFragment(new GeldberekenenFragment());
         } else if (id == R.id.tijdBerekenen) {
             replaceFragment(new TijdBerekenenFragment());
         } else if (id == R.id.datumsBerekenen) {
-
+            replaceFragment(new DatumsBerkenen());
         } else if (id == R.id.gewichtOmzetten) {
-
+            replaceFragment(new GewichtOmzettenFragment());
         } else if (id == R.id.volumeOmzetten) {
-
+            replaceFragment(new VolumeFragment());
         } else if (id == R.id.volumeOmzetten) {
 
         }
