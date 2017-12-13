@@ -2,6 +2,7 @@ package be.thomasmore.dyscalculie;
 
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +27,8 @@ public class GewichtOmzettenFragment extends Fragment {
 
     private Spinner spinner;
     private static final String[]eenheden = {"mg", "g", "kg", "ton"};
+    private TextToSpeech textToSpeech;
+    private Timer timer;
 
     public GewichtOmzettenFragment() {
         // Required empty public constructor
@@ -43,6 +50,17 @@ public class GewichtOmzettenFragment extends Fragment {
         final TextView g = view.findViewById((R.id.gText));
         final TextView kg = view.findViewById((R.id.kgText));
         final TextView ton = view.findViewById((R.id.tonText));
+
+
+        textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status){
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(new Locale("nl_NL"));
+                }
+            }
+        });
+
 
         final EditText origineleHoeveelheid = view.findViewById(R.id.origineleHoeveelheid);
         origineleHoeveelheid.setText("1");
@@ -101,13 +119,15 @@ public class GewichtOmzettenFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                if (timer != null) {
+                    timer.cancel();
+                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 if (!origineleHoeveelheid.getText().toString().isEmpty()) {
-                    float basis = Float.parseFloat(String.valueOf(origineleHoeveelheid.getText().toString()));
+                    final float basis = Float.parseFloat(String.valueOf(origineleHoeveelheid.getText().toString()));
                     switch (spinner.getSelectedItem().toString()) {
                         case "mg":
                             mg.setText(String.valueOf(basis));
@@ -140,6 +160,13 @@ public class GewichtOmzettenFragment extends Fragment {
                             ton.setText(0);
                             break;
                     }
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            textToSpeech.speak(origineleHoeveelheid.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        }
+                    }, 600);
                 }
             }
         });

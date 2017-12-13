@@ -2,6 +2,7 @@ package be.thomasmore.dyscalculie;
 
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +27,8 @@ public class VolumeFragment extends Fragment {
 
     private Spinner spinner;
     private static final String[]eenheden = {"ml", "cl", "dl", "l"};
+    private TextToSpeech textToSpeech;
+    private Timer timer;
 
     public VolumeFragment() {
         // Required empty public constructor
@@ -43,6 +50,15 @@ public class VolumeFragment extends Fragment {
         final TextView cl = view.findViewById((R.id.clText));
         final TextView dl = view.findViewById((R.id.dlText));
         final TextView liter = view.findViewById((R.id.lText));
+
+        textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status){
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(new Locale("nl_NL"));
+                }
+            }
+        });
 
         final EditText origineleHoeveelheid = view.findViewById(R.id.origineleHoeveelheid);
         origineleHoeveelheid.setText("1");
@@ -101,7 +117,9 @@ public class VolumeFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                if (timer != null) {
+                    timer.cancel();
+                }
             }
 
             @Override
@@ -140,6 +158,13 @@ public class VolumeFragment extends Fragment {
                             liter.setText("0");
                             break;
                     }
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            textToSpeech.speak(origineleHoeveelheid.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        }
+                    }, 600);
                 }
             }
         });
