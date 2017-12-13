@@ -28,6 +28,16 @@
             android:id="@+id/datumsBerekenen"
             android:icon="@drawable/calendar"
             android:title="Datums berkenen" />
+
+        <item
+            android:id="@+id/gewichtOmzetten"
+            android:icon="@drawable/gewicht"
+            android:title="Gewicht omzetten" />
+
+        <item
+            android:id="@+id/volumeOmzetten"
+            android:icon="@drawable/bottle"
+            android:title="Volume omzetten" />
     </group>
 
     <item android:title="Communicate">
