@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new VolumeFragment());
         } else if (id == R.id.gewichtOmzetten) {
             replaceFragment(new GewichtOmzettenFragment());
+        } else if (id == R.id.afstandenOmzetten){
+            replaceFragment(new AfstandOmzettenFragment());
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -125,8 +127,8 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new GewichtOmzettenFragment());
         } else if (id == R.id.volumeOmzetten) {
             replaceFragment(new VolumeFragment());
-        } else if (id == R.id.volumeOmzetten) {
-
+        } else if (id == R.id.afstandenOmzetten) {
+            replaceFragment(new AfstandOmzettenFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

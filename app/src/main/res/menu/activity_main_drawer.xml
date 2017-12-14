@@ -38,6 +38,11 @@
             android:id="@+id/volumeOmzetten"
             android:icon="@drawable/bottle"
             android:title="Volume omzetten" />
+
+        <item
+            android:id="@+id/afstandenOmzetten"
+            android:icon="@drawable/ruler"
+            android:title="Afstand omzetten" />
     </group>
 
     <item android:title="Communicate">
