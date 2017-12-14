@@ -20,6 +20,8 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static be.thomasmore.dyscalculie.R.id.teBetalen;
+
 public class GeldberekenenFragment extends Fragment {
 
     private TextToSpeech textToSpeech;
@@ -115,31 +117,49 @@ public class GeldberekenenFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void calculate(View v) {
-        TextView tTeBetalen = getView().findViewById(R.id.teBetalen);
+        TextView tTeBetalen = getView().findViewById(teBetalen);
         TextView tGegevenBedrag = getView().findViewById(R.id.gegevenBedrag);
         TextView tWisselgeld = getView().findViewById(R.id.wisselgeld);
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
         SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
         SharedPreferences.Editor editor = pref.edit();
 
-        double teBetalen = Double.parseDouble(tTeBetalen.getText().toString());
-        double gegevenBedrag = Double.parseDouble(tGegevenBedrag.getText().toString());
-        if (teBetalen <= gegevenBedrag) {
-            double wisselgeld = gegevenBedrag - teBetalen;
+        if (!(tTeBetalen.getText().toString().isEmpty() || tGegevenBedrag.getText().toString().isEmpty())){
+            double teBetalen = Double.parseDouble(tTeBetalen.getText().toString());
+            double gegevenBedrag = Double.parseDouble(tGegevenBedrag.getText().toString());
+            if (teBetalen <= gegevenBedrag) {
+                double wisselgeld = gegevenBedrag - teBetalen;
 
-            tWisselgeld.setText(decimalFormat.format(wisselgeld));
-            textToSpeech.speak("Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
+                tWisselgeld.setText(decimalFormat.format(wisselgeld));
+                textToSpeech.speak("Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
 
-            editor.putString("geldBerekening", "Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug");
-            editor.commit();
+                editor.putString("geldBerekening", "Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug");
+                editor.commit();
+            } else {
+                double geldTeKort = teBetalen - gegevenBedrag;
+                String teKort = "Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!";
+                textToSpeech.speak("Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
+                tWisselgeld.setText(teKort);
+
+                editor.putString("geldBerekening", teKort);
+                editor.commit();
+            }
         } else {
-            double geldTeKort = teBetalen - gegevenBedrag;
-            String teKort = "Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!";
-            textToSpeech.speak("Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
-            tWisselgeld.setText(teKort);
-
-            editor.putString("geldBerekening", teKort);
-            editor.commit();
+            if (tTeBetalen.getText().toString().isEmpty()){
+                String error = "Te betalen is niet ingevuld";
+                tWisselgeld.setText(error);
+                textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+            }
+            if (tGegevenBedrag.getText().toString().isEmpty()){
+                String error = "Gegeven bedrag is niet ingevuld";
+                tWisselgeld.setText(error);
+                textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+            }
+            if (tTeBetalen.getText().toString().isEmpty() && tGegevenBedrag.getText().toString().isEmpty()){
+                String error = "De velden zijn niet ingevuld";
+                tWisselgeld.setText(error);
+                textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+            }
         }
     }
 }
