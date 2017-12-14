@@ -1,6 +1,7 @@
 package be.thomasmore.dyscalculie;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
@@ -165,6 +166,10 @@ public class VolumeFragment extends Fragment {
                             textToSpeech.speak(origineleHoeveelheid.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
                         }
                     }, 600);
+                    SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("volume",  origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString());
+                    editor.commit();
                 }
             }
         });
