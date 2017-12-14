@@ -27,6 +27,21 @@
         <item
             android:id="@+id/datumsBerekenen"
             android:icon="@drawable/calendar"
-            android:title="Datums berekenen" />
+            android:title="Datums berkenen" />
+
+        <item
+            android:id="@+id/gewichtOmzetten"
+            android:icon="@drawable/gewicht"
+            android:title="Gewicht omzetten" />
+
+        <item
+            android:id="@+id/volumeOmzetten"
+            android:icon="@drawable/bottle"
+            android:title="Volume omzetten" />
+
+        <item
+            android:id="@+id/afstandenOmzetten"
+            android:icon="@drawable/ruler"
+            android:title="Afstand omzetten" />
     </group>
 </menu>

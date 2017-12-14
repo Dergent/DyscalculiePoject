@@ -16,8 +16,33 @@
     <string name="volumeOmzetten">Volume omzetten</string>
     <string name="afstandenOmzetten">Afstanden omzetten</string>
 
+    <!-- For weight -->
+    <string name="maateenheid">maateenheid:</string>
+    <string name="hoeveelheid">hoeveelheid:</string>
+    <string name="mg"> mg</string>
+    <string name="g"> g</string>
+    <string name="kg"> kg</string>
+    <string name="ton"> ton</string>
+
+    <!-- For Volume -->
+    <string name="ml"> ml</string>
+    <string name="cl"> cl</string>
+    <string name="dl"> dl</string>
+    <string name="l"> l</string>
+
     <!-- For Time -->
     <string name="beginTime">Begintijd</string>
     <string name="endTime">Eindtijd</string>
+
+    <!-- For Gewicht -->
+    <string name="mm"> mm</string>
+    <string name="cm"> cm</string>
+    <string name="dm"> dm</string>
+    <string name="m"> m</string>
+    <string name="km"> km</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

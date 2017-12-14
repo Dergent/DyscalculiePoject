@@ -84,6 +84,12 @@ public class MainActivity extends AppCompatActivity
             replaceFragment(new GeldTellenFragment());
         } else if (id == R.id.datumsBerekenen) {
             replaceFragment(new DatumsBerkenen());
+        } else if (id == R.id.volumeOmzetten) {
+            replaceFragment(new VolumeFragment());
+        } else if (id == R.id.gewichtOmzetten) {
+            replaceFragment(new GewichtOmzettenFragment());
+        } else if (id == R.id.afstandenOmzetten){
+            replaceFragment(new AfstandOmzettenFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -108,17 +114,17 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.wisselgeld) {
             replaceFragment(new GeldberekenenFragment());
         } else if (id == R.id.geldTellen) {
-            replaceFragment(new GeldTellenFragment());
+
         } else if (id == R.id.tijdBerekenen) {
             replaceFragment(new TijdBerekenenFragment());
         } else if (id == R.id.datumsBerekenen) {
             replaceFragment(new DatumsBerkenen());
         } else if (id == R.id.gewichtOmzetten) {
-
+            replaceFragment(new GewichtOmzettenFragment());
         } else if (id == R.id.volumeOmzetten) {
-
-        } else if (id == R.id.volumeOmzetten) {
-
+            replaceFragment(new VolumeFragment());
+        } else if (id == R.id.afstandenOmzetten) {
+            replaceFragment(new AfstandOmzettenFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
