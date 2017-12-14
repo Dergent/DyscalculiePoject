@@ -1,9 +1,12 @@
 package be.thomasmore.dyscalculie;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
@@ -14,12 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static android.app.Activity.RESULT_OK;
 import static be.thomasmore.dyscalculie.R.id.nieuwePrijs;
 import static be.thomasmore.dyscalculie.R.id.oorspronkelijkePrijs;
 
@@ -28,7 +34,8 @@ public class PercentenFragment extends Fragment {
 
     private TextToSpeech textToSpeech;
     private Timer timer;
-    private HistoryFragment historyFragment = new HistoryFragment();
+    private int viewId;
+    private final int REQ_CODE_SPEECH_OUTPUT = 14;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +51,9 @@ public class PercentenFragment extends Fragment {
                 }
             }
         });
+
+
+
 
         oPrijs.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,6 +110,24 @@ public class PercentenFragment extends Fragment {
                 calculate(v);
             }
         });
+
+        final ImageView percentageSpeak = view.findViewById(R.id.percentageSpeak);
+        final ImageView oorspronkelijkePrijsSpeak = view.findViewById(R.id.oorspronkelijkePrijsSpeak);
+
+        percentageSpeak.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            public void onClick(View v){
+                startListen(v);
+            }
+        });
+
+        oorspronkelijkePrijsSpeak.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            public void onClick(View v){
+                startListen(v);
+            }
+        });
+
         return view;
     }
 
@@ -147,5 +175,44 @@ public class PercentenFragment extends Fragment {
                 textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
             }
         }
+
     }
+
+    public void startListen(View v){
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Praat nu...");
+
+        viewId = v.getId();
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_OUTPUT);
+        } catch (ActivityNotFoundException tim){
+
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case REQ_CODE_SPEECH_OUTPUT:
+                if (resultCode == RESULT_OK && null != data){
+
+                        if (viewId == R.id.percentageSpeak){
+                            ArrayList<String> voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                            EditText percentage = getView().findViewById(R.id.percentage);
+                            percentage.setText(voiceInText.get(0));
+                        }
+                        if (viewId == R.id.oorspronkelijkePrijsSpeak){
+                            ArrayList<String> voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                            EditText oPrijs = getView().findViewById(R.id.oorspronkelijkePrijs);
+                            oPrijs.setText(voiceInText.get(0));
+                        }
+                }
+                break;
+        }
+    }
+
 }
