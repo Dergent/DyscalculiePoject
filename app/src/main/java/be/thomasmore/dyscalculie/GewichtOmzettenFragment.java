@@ -1,6 +1,7 @@
 package be.thomasmore.dyscalculie;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
@@ -101,6 +102,7 @@ public class GewichtOmzettenFragment extends Fragment {
                             ton.setText(0);
                             break;
                     }
+
                 }
             }
 
@@ -167,14 +169,16 @@ public class GewichtOmzettenFragment extends Fragment {
                             textToSpeech.speak(origineleHoeveelheid.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
                         }
                     }, 600);
+
+                    SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("gewicht",  origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString());
+                    editor.commit();
                 }
             }
         });
-
-
-
+        
         // Inflate the layout for this fragment
         return view;
     }
-
 }

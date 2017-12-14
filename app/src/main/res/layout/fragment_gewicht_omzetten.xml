@@ -120,7 +120,13 @@
                 android:gravity="center"/>
         </LinearLayout>
 
-
+        <Button
+            android:id="@+id/historyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toevoegen aan historiek"
+            android:layout_gravity="center_horizontal"
+            android:onClick="addHistory_OnClick"/>
 
     </LinearLayout>
 </FrameLayout>

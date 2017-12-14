@@ -1,5 +1,6 @@
 package be.thomasmore.dyscalculie;
 
+import android.content.SharedPreferences;
 import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -118,6 +119,8 @@ public class GeldberekenenFragment extends Fragment {
         TextView tGegevenBedrag = getView().findViewById(R.id.gegevenBedrag);
         TextView tWisselgeld = getView().findViewById(R.id.wisselgeld);
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+        SharedPreferences.Editor editor = pref.edit();
 
         double teBetalen = Double.parseDouble(tTeBetalen.getText().toString());
         double gegevenBedrag = Double.parseDouble(tGegevenBedrag.getText().toString());
@@ -126,11 +129,17 @@ public class GeldberekenenFragment extends Fragment {
 
             tWisselgeld.setText(decimalFormat.format(wisselgeld));
             textToSpeech.speak("Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
+
+            editor.putString("geldBerekening", "Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug");
+            editor.commit();
         } else {
             double geldTeKort = teBetalen - gegevenBedrag;
             String teKort = "Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!";
             textToSpeech.speak("Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
             tWisselgeld.setText(teKort);
+
+            editor.putString("geldBerekening", teKort);
+            editor.commit();
         }
     }
 }

@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/hoofdmenu"
-            android:icon="@drawable/euro"
+            android:icon="@drawable/home"
             android:title="Hoofdmenu" />
         <item
             android:id="@+id/percentages"
@@ -14,7 +14,7 @@
         <item
             android:id="@+id/geldberekenen"
             android:icon="@drawable/euro"
-            android:title="Geldberekeningen" />
+            android:title="Geld berekeningen" />
 
         <item
             android:id="@+id/tijdBerekenen"
@@ -43,5 +43,11 @@
             android:id="@+id/afstandenOmzetten"
             android:icon="@drawable/ruler"
             android:title="Afstand omzetten" />
+            android:title="Datums berekenen" />
+
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/history"
+            android:title="Historiek"/>
     </group>
 </menu>

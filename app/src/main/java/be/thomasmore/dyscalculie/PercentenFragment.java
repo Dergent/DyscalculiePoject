@@ -1,5 +1,6 @@
 package be.thomasmore.dyscalculie;
 
+import android.content.SharedPreferences;
 import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class PercentenFragment extends Fragment {
 
     private TextToSpeech textToSpeech;
     private Timer timer;
+    private HistoryFragment historyFragment = new HistoryFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -113,6 +115,13 @@ public class PercentenFragment extends Fragment {
 
         tNieuwePrijs.setText(decimalFormat.format(nieuwePrijs));
         textToSpeech.speak("De nieuwe prijs is " + decimalFormat.format(nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+
+
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("procent", decimalFormat.format(nieuwePrijs) + " euro");
+        editor.commit();
+
 
     }
 }
