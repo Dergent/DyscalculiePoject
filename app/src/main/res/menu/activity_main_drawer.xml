@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/hoofdmenu"
-            android:icon="@drawable/euro"
+            android:icon="@drawable/home"
             android:title="Hoofdmenu" />
         <item
             android:id="@+id/percentages"
@@ -47,7 +47,7 @@
 
         <item
             android:id="@+id/history"
-            android:icon="@drawable/clock"
+            android:icon="@drawable/history"
             android:title="Historiek"/>
     </group>
 </menu>
