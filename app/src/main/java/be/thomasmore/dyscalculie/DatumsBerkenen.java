@@ -2,6 +2,7 @@ package be.thomasmore.dyscalculie;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,12 +12,25 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class DatumsBerkenen extends Fragment {
+
+    private TextToSpeech textToSpeech;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_datums_berkenen, container, false);
         final Button button = view.findViewById(R.id.buttonCalculate);
+
+        textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status){
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(new Locale("nl_NL"));
+                }
+            }
+        });
         button.setOnClickListener(new View.OnClickListener(){
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v){
@@ -38,7 +52,7 @@ public class DatumsBerkenen extends Fragment {
 
             int jaar = eindDatum.getYear() - beginDatum.getYear();
 
-            if (beginDatum.getYear() == eindDatum.getYear() && (beginDatum.getMonth() > eindDatum.getMonth() || beginDatum.getDayOfMonth() > eindDatum.getDayOfMonth())){
+            if (beginDatum.getYear() == eindDatum.getYear() && (beginDatum.getMonth() >= eindDatum.getMonth() && beginDatum.getDayOfMonth() > eindDatum.getDayOfMonth())){
                 textView.setText("De begindatum is voor de einddatum.");
             } else {
                 if (eindDatum.getDayOfMonth() >= beginDatum.getDayOfMonth() && eindDatum.getMonth() >= beginDatum.getMonth()) {
@@ -94,10 +108,12 @@ public class DatumsBerkenen extends Fragment {
                         maand = 0;
                     }
                 }
-                textView.setText("Verstreken tijd: " + dag + " dag(en) " + maand + " maand(en) " + jaar + " ja(a)r(en).");
+                textView.setText("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.");
+                textToSpeech.speak("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.", TextToSpeech.QUEUE_FLUSH, null);
             }
         } else {
             textView.setText("De begindatum is voor de einddatum.");
+            textToSpeech.speak("De begindatum is voor de einddatum.", TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 

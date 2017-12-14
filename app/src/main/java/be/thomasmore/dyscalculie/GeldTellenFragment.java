@@ -3,6 +3,7 @@ package be.thomasmore.dyscalculie;
 import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,12 +16,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GeldTellenFragment extends Fragment {
+    private TextToSpeech textToSpeech;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_geld_tellen, container, false);
+
         ImageView cent1Plus = view.findViewById(R.id.plus1);
         ImageView cent1Min = view.findViewById(R.id.minus1);
 
@@ -98,6 +102,15 @@ public class GeldTellenFragment extends Fragment {
         imageViewsMinus.add(euro200Min);
         imageViewsPlus.add(euro500Plus);
         imageViewsMinus.add(euro500Min);
+
+        textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status){
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(new Locale("nl_NL"));
+                }
+            }
+        });
 
         for (ImageView imageView: imageViewsPlus) {
             imageView.setOnClickListener(new View.OnClickListener(){
@@ -209,6 +222,7 @@ public class GeldTellenFragment extends Fragment {
                 break;
         }
         editAmount.setText(String.valueOf(newNumber));
+        textToSpeech.speak(editAmount.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
     }
 
     public void minusOne_onClick(View v) {
@@ -296,6 +310,7 @@ public class GeldTellenFragment extends Fragment {
                 break;
         }
         editAmount.setText(String.valueOf(newNumber));
+        textToSpeech.speak(editAmount.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
     }
 
     public int calculateNumberMinus(int number) {
@@ -342,8 +357,9 @@ public class GeldTellenFragment extends Fragment {
         total += Double.parseDouble(euro500.getText().toString())*500;
 
         TextView textView = getView().findViewById(R.id.totaal);
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
         textView.setText(String.valueOf(decimalFormat.format(total)));
+        textToSpeech.speak(decimalFormat.format(total) + " euro", TextToSpeech.QUEUE_FLUSH, null);
     }
 
 }
