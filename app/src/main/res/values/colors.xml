@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+
+    <!-- zwart wit colors -->
+    <color name="ColorZwart">#000000</color>
+    <color name="ColorWit">#FFFFFF</color>
 </resources>
