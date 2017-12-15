@@ -11,7 +11,25 @@
         android:paddingTop="60dp"
         android:paddingLeft="50dp"
         >
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        <Button android:id="@+id/defaultTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Theme"
+            android:onClick="onClickButtonThemes"/>
+
+        <Button android:id="@+id/zwartwit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Second Theme"
+            android:onClick="onClickButtonThemes"/>
+
+        <Button android:id="@+id/pastel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Third Theme"
+            android:onClick="onClickButtonThemes"/>
+
+    <!--<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/radiogroup_themes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -29,7 +47,8 @@
             android:layout_height="wrap_content"
             android:text="@string/pastel"
             android:onClick="onRadioButtonClicked"/>
-    </RadioGroup>
+    </RadioGroup>-->
+
 
     </LinearLayout>
 
