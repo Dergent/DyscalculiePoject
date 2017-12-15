@@ -14,18 +14,21 @@
         <Button android:id="@+id/defaultTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="First Theme"
             android:onClick="onClickButtonThemes"/>
 
         <Button android:id="@+id/zwartwit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="Second Theme"
             android:onClick="onClickButtonThemes"/>
 
         <Button android:id="@+id/pastel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="Third Theme"
             android:onClick="onClickButtonThemes"/>
 

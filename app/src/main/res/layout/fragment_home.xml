@@ -30,6 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/solden"
                 android:onClick="onClickButton"/>
             <Button
@@ -37,6 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/wisselgeld"
                 android:onClick="onClickButton"/>
 
@@ -54,6 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/geldTellen"
                 android:onClick="onClickButton"/>
 
@@ -62,6 +65,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/tijdBerekenen"
                 android:onClick="onClickButton"/>
 
@@ -79,6 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/datumsBerekenen"
                 android:onClick="onClickButton"/>
 
@@ -88,6 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/gewichtOmzetten"
                 android:onClick="onClickButton"/>
 
@@ -105,6 +111,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/volumeOmzetten"
                 android:onClick="onClickButton"/>
 
@@ -113,6 +120,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="0.5"
+                android:layout_margin="10dp"
                 android:text="@string/afstandenOmzetten"
                 android:onClick="onClickButton"/>
 
