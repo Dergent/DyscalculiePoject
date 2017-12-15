@@ -20,13 +20,13 @@ public class Utils {
         switch (sTheme) {
             default:
             case THEME_DEFAULT:
-                 activity.setTheme(R.style.FirstTheme);
+                 activity.setTheme(R.style.DefaultTheme);
                 break;
             case THEME_BLACKWHITE:
-                activity.setTheme(R.style.SecondTheme);
+                activity.setTheme(R.style.ZwartWit);
                 break;
             case THEME_PASTEL:
-                activity.setTheme(R.style.Thirdheme);
+                activity.setTheme(R.style.Pastel);
                 break;
         }
     }
