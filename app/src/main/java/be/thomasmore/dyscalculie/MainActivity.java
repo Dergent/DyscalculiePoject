@@ -65,10 +65,11 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            replaceFragment(new ThemesFragment());
+            showThemesDialog();
+            //replaceFragment(new ThemesFragment());
             return true;
         }else if(id == R.id.about){
-            showCustomDialog();
+            showAboutDialog();
         }
 
         return super.onOptionsItemSelected(item);
@@ -155,12 +156,23 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void showCustomDialog() {
+    private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
 
         final View viewInflater = inflater.inflate(R.layout.dialog_about, null);
         builder.setTitle("About")
+                .setView(viewInflater);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showThemesDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        final View viewInflater = inflater.inflate(R.layout.dialog_themes, null);
+        builder.setTitle("Thema's")
                 .setView(viewInflater);
         AlertDialog dialog = builder.create();
         dialog.show();

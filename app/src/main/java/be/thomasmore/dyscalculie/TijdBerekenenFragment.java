@@ -81,29 +81,30 @@ public class TijdBerekenenFragment extends Fragment {
 
         TextView tijdverschil = getView().findViewById(R.id.tijdverschil);
 
-            if (beginHour < endHour){
-                hour = endHour - beginHour;
-            }
-            if (beginHour == endHour && beginMinutes > endMinutes){
-                hour = 24;
-            }
-            if (beginMinutes <= endMinutes){
-                if (hour == 24){
-                    hour--;
-                }
-                minutes = endMinutes - beginMinutes;
-            }
-            if (beginHour > endHour) {
-                hour = 24 - beginHour + endHour;
-            }
-            if (beginMinutes > endMinutes) {
+        if (beginHour < endHour){
+            hour = endHour - beginHour;
+        }
+        if (beginHour == endHour && beginMinutes > endMinutes){
+            hour = 24;
+        }
+        if (beginMinutes <= endMinutes){
+            if (hour == 24){
                 hour--;
-                minutes = 60 - beginMinutes + endMinutes;
             }
-            if (beginHour == endHour && endMinutes == beginMinutes){
-                hour = 0;
-                minutes = 0;
-            }
+            minutes = endMinutes - beginMinutes;
+        }
+        if (beginHour > endHour) {
+            hour = 24 - beginHour + endHour;
+        }
+        if (beginMinutes > endMinutes) {
+            hour--;
+            minutes = 60 - beginMinutes + endMinutes;
+        }
+        if (beginHour == endHour && endMinutes == beginMinutes){
+            hour = 0;
+            minutes = 0;
+        }
+
         tijdverschil.setText("Verstreken tijd: " + hour + " uur " + minutes + " min");
         textToSpeech.speak("Verstreken tijd: " + hour + " uur " + minutes + " min", TextToSpeech.QUEUE_FLUSH, null);
 
