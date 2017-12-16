@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.thomasmore.dyscalculie.HomeFragment">
+    tools:context="be.thomasmore.dyscalculie.HomeFragment"
+    android:paddingTop="40dp">
 
     <ScrollView
         android:layout_width="match_parent"
