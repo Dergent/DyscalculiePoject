@@ -3,7 +3,6 @@ package be.thomasmore.dyscalculie;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -143,15 +142,13 @@ public class PercentenFragment extends Fragment {
                     float oorspronkelijkePrijs = Float.parseFloat(tOorspronkelijkePrijs.getText().toString());
                     float percentage = Float.parseFloat(tPercentage.getText().toString());
                     float nieuwePrijs = oorspronkelijkePrijs * (1 - (percentage / 100));
-                    DecimalFormat decimalFormat = new DecimalFormat("#0.00");
 
-
-                    tNieuwePrijs.setText(decimalFormat.format(nieuwePrijs));
-                    textToSpeech.speak("De nieuwe prijs is " + decimalFormat.format(nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                    tNieuwePrijs.setText(String.format("%.2f", nieuwePrijs));
+                    textToSpeech.speak("De nieuwe prijs is " + String.format("%.2f", nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
 
                     SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("procent", decimalFormat.format(nieuwePrijs) + " euro");
+                    editor.putString("procent", String.format("%.2f", nieuwePrijs) + " euro");
                     editor.commit();
                 } else {
                     String nieuwePrijs = "Een percentage kan niet meer zijn dan 100";

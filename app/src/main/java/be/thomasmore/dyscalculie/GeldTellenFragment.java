@@ -1,7 +1,6 @@
 package be.thomasmore.dyscalculie;
 
 import android.content.SharedPreferences;
-import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -358,13 +357,12 @@ public class GeldTellenFragment extends Fragment {
         total += Double.parseDouble(euro500.getText().toString())*500;
 
         TextView textView = getView().findViewById(R.id.totaal);
-        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-        textView.setText(String.valueOf(decimalFormat.format(total)));
-        textToSpeech.speak(decimalFormat.format(total) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+        textView.setText(String.format("%.2f", total));
+        textToSpeech.speak(String.format("%.2f", total) + " euro", TextToSpeech.QUEUE_FLUSH, null);
 
         SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("geldTellen", "totaal is " + decimalFormat.format(total) + " euro");
+        editor.putString("geldTellen", "totaal is " + String.format("%.2f", total) + " euro");
         editor.commit();
     }
 

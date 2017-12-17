@@ -3,7 +3,6 @@ package be.thomasmore.dyscalculie;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -148,7 +147,6 @@ public class GeldberekenenFragment extends Fragment {
             TextView tTeBetalen = getView().findViewById(teBetalen);
             TextView tGegevenBedrag = getView().findViewById(R.id.gegevenBedrag);
             TextView tWisselgeld = getView().findViewById(R.id.wisselgeld);
-            DecimalFormat decimalFormat = new DecimalFormat("#0.00");
             SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
             SharedPreferences.Editor editor = pref.edit();
 
@@ -158,15 +156,15 @@ public class GeldberekenenFragment extends Fragment {
                 if (teBetalen <= gegevenBedrag) {
                     double wisselgeld = gegevenBedrag - teBetalen;
 
-                    tWisselgeld.setText(decimalFormat.format(wisselgeld));
-                    textToSpeech.speak("Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
+                    tWisselgeld.setText(String.format("%.2f", wisselgeld));
+                    textToSpeech.speak("Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
 
-                    editor.putString("geldBerekening", "Je krijgt " + decimalFormat.format(wisselgeld) + " euro terug");
+                    editor.putString("geldBerekening", "Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug");
                     editor.commit();
                 } else {
                     double geldTeKort = teBetalen - gegevenBedrag;
-                    String teKort = "Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!";
-                    textToSpeech.speak("Je komt: " + decimalFormat.format(geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
+                    String teKort = "Je komt: " + String.format("%.2f", geldTeKort) + " euro te kort!";
+                    textToSpeech.speak("Je komt: " + String.format("%.2f", geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
                     tWisselgeld.setText(teKort);
 
                     editor.putString("geldBerekening", teKort);

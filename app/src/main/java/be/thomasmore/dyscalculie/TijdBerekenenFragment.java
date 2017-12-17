@@ -73,12 +73,27 @@ public class TijdBerekenenFragment extends Fragment {
         TimePicker endTimePicker = getView().findViewById(R.id.endTimePicker);
         int hour = 0;
         int minutes = 0;
-        int beginHour = beginTimePicker.getHour();
-        int beginMinutes = beginTimePicker.getMinute();
+        int beginHour = 0;
+        int beginMinutes = 0;
+        int endHour = 0;
+        int endMinutes = 0;
 
-        int endHour = endTimePicker.getHour();
-        int endMinutes = endTimePicker.getMinute();
+        int currentApiCersion = Build.VERSION.SDK_INT;
+        if (currentApiCersion > Build.VERSION_CODES.LOLLIPOP_MR1){
+            beginHour = beginTimePicker.getHour();
+            beginMinutes = beginTimePicker.getMinute();
 
+            endHour = endTimePicker.getHour();
+            endMinutes = endTimePicker.getMinute();
+
+        } else {
+            beginHour = beginTimePicker.getCurrentHour();
+            beginMinutes = beginTimePicker.getCurrentMinute();
+
+            endHour = endTimePicker.getCurrentHour();
+            endMinutes = endTimePicker.getCurrentMinute();
+        }
+        
         TextView tijdverschil = getView().findViewById(R.id.tijdverschil);
 
         if (beginHour < endHour){
