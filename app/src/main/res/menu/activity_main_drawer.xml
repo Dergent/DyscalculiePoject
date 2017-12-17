@@ -14,7 +14,7 @@
         <item
             android:id="@+id/geldberekenen"
             android:icon="@drawable/euro"
-            android:title="Geld berekeningen" />
+            android:title="Wisselgeld berekenen" />
 
         <item
             android:id="@+id/tijdBerekenen"
@@ -27,7 +27,7 @@
         <item
             android:id="@+id/datumsBerekenen"
             android:icon="@drawable/calendar"
-            android:title="Datums berkenen" />
+            android:title="Datums berekenen" />
 
         <item
             android:id="@+id/gewichtOmzetten"
