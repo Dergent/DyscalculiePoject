@@ -71,21 +71,21 @@ public class VolumeFragment extends Fragment {
                     switch (spinner.getSelectedItem().toString()) {
                         case "ml":
                             ml.setText(String.valueOf(basis));
-                            cl.setText(String.valueOf(String.format("%.3f", basis / 10)));
-                            dl.setText(String.valueOf(String.format("%.6f", basis / 100)));
-                            liter.setText(String.valueOf(String.format("%.9f", basis / 1000)));
+                            cl.setText(String.valueOf(String.format("%.1f", basis / 10)));
+                            dl.setText(String.valueOf(String.format("%.2f", basis / 100)));
+                            liter.setText(String.valueOf(String.format("%.3f", basis / 1000)));
                             break;
                         case "cl":
                             ml.setText(String.valueOf(String.format("%.1f", basis * 10)));
                             cl.setText(String.valueOf(basis));
-                            dl.setText(String.valueOf(String.format("%.3f", basis / 100)));
-                            liter.setText(String.valueOf(String.format("%.6f", basis / 1000)));
+                            dl.setText(String.valueOf(String.format("%.1f", basis / 10)));
+                            liter.setText(String.valueOf(String.format("%.2f", basis / 100)));
                             break;
                         case "dl":
                             ml.setText(String.valueOf(String.format("%.1f", basis * 100)));
-                            cl.setText(String.valueOf(String.format("%.1f", basis * 1000)));
+                            cl.setText(String.valueOf(String.format("%.1f", basis * 10)));
                             dl.setText(String.valueOf(basis));
-                            liter.setText(String.valueOf(String.format("%.3f", basis / 10)));
+                            liter.setText(String.valueOf(String.format("%.1f", basis / 10)));
                             break;
                         case "l":
                             ml.setText(String.valueOf(String.format("%.1f", basis * 1000)));
@@ -128,28 +128,28 @@ public class VolumeFragment extends Fragment {
                 if (!origineleHoeveelheid.getText().toString().isEmpty()) {
                     float basis = Float.parseFloat(String.valueOf(origineleHoeveelheid.getText().toString()));
                     switch (spinner.getSelectedItem().toString()) {
-                        case "mg":
+                        case "ml":
                             ml.setText(String.valueOf(basis));
-                            cl.setText(String.valueOf(String.format("%.3f", basis / 1000)));
-                            dl.setText(String.valueOf(String.format("%.6f", basis / 1000000)));
-                            liter.setText(String.valueOf(String.format("%.9f", basis / 1000000000)));
-                            break;
-                        case "g":
-                            ml.setText(String.valueOf(String.format("%.1f", basis * 1000)));
-                            cl.setText(String.valueOf(basis));
-                            dl.setText(String.valueOf(String.format("%.3f", basis / 1000)));
-                            liter.setText(String.valueOf(String.format("%.6f", basis / 1000000)));
-                            break;
-                        case "kg":
-                            ml.setText(String.valueOf(String.format("%.1f", basis * 1000000)));
-                            cl.setText(String.valueOf(String.format("%.1f", basis * 1000)));
-                            dl.setText(String.valueOf(basis));
+                            cl.setText(String.valueOf(String.format("%.1f", basis / 10)));
+                            dl.setText(String.valueOf(String.format("%.2f", basis / 100)));
                             liter.setText(String.valueOf(String.format("%.3f", basis / 1000)));
                             break;
-                        case "ton":
-                            ml.setText(String.valueOf(String.format("%.1f", basis * 1000000000)));
-                            cl.setText(String.valueOf(String.format("%.1f", basis * 1000000)));
-                            dl.setText(String.valueOf(String.format("%.1f", basis * 1000)));
+                        case "cl":
+                            ml.setText(String.valueOf(String.format("%.1f", basis * 10)));
+                            cl.setText(String.valueOf(basis));
+                            dl.setText(String.valueOf(String.format("%.1f", basis / 10)));
+                            liter.setText(String.valueOf(String.format("%.2f", basis / 100)));
+                            break;
+                        case "dl":
+                            ml.setText(String.valueOf(String.format("%.1f", basis * 100)));
+                            cl.setText(String.valueOf(String.format("%.1f", basis * 10)));
+                            dl.setText(String.valueOf(basis));
+                            liter.setText(String.valueOf(String.format("%.1f", basis / 10)));
+                            break;
+                        case "l":
+                            ml.setText(String.valueOf(String.format("%.1f", basis * 1000)));
+                            cl.setText(String.valueOf(String.format("%.1f", basis * 100)));
+                            dl.setText(String.valueOf(String.format("%.1f", basis * 10)));
                             liter.setText(String.valueOf(basis));
                             break;
                         default:

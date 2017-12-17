@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" />
             <TextView
-                android:id="@+id/mgLabel"
+                android:id="@+id/mmLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mm"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" />
             <TextView
-                android:id="@+id/gLabel"
+                android:id="@+id/cmLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cm"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" />
             <TextView
-                android:id="@+id/kgLabel"
+                android:id="@+id/dmLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dm"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" />
             <TextView
-                android:id="@+id/tonLabel"
+                android:id="@+id/mLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/m"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center" />
             <TextView
-                android:id="@+id/tonLabel"
+                android:id="@+id/kmLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/km"

@@ -1,23 +1,58 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="DefaultTheme" >
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/DefaultButton</item>
     </style>
 
-    <!-- zwart wit theme. -->
-    <style name="ZwartWit" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="DefaultButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/ColorWit</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="ZwartWit">
+        <item name="android:textColor">@color/ColorZwart</item>
         <item name="colorPrimary">@color/ColorZwart</item>
-        <item name="colorPrimaryDark">@color/ColorWit</item>
+        <item name="colorPrimaryDark">@color/ColorZwart</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/ZwartWitButton</item>
     </style>
 
-    <!-- zwart wit theme. -->
-    <style name="Pastel" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="ZwartWitButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/ColorWit</item>
+        <item name="android:background">@color/ColorZwart</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
+    <style name="Pastel" >
+        <item name="android:textColor">@color/ColorZwart</item>
+        <item name="colorPrimary">#779ecb</item>
+        <item name="colorPrimaryDark">#779ecb</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/PastelButton</item>
+    </style>
+
+    <style name="PastelButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/ColorWit</item>
+        <item name="android:background">#779ecb</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

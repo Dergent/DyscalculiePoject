@@ -4,7 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="Themas">Thema\'s</string>
 
     <!-- For home -->
     <string name="solden">Solden</string>
@@ -42,8 +42,14 @@
     <string name="km"> km</string>
 
     <!-- For Themes -->
-    <string name="zwartwit">zwart wit</string>
-    <string name="pastel">pastel</string>
+    <string name="zwartwit">Zwart wit thema</string>
+    <string name="pastel">Pastel thema</string>
+    <string name="defaultTheme">Standaard thema</string>
+
+    <!-- For options on main activity-->
+    <string name="about">About</string>
+    <string name="namen">Developers:\nPieter-jan Dergent &amp; Zento De Houwer\n2017</string>
+    <string name="uitleg">Dit is een app om mensen met dyscalculie te helpen door dagelijkse berekeningen te vergemakkelijken\nGemaakt in opdracht van Thomas More Geel - ITFactory - App development in samenwerking met Thomas More Antwerpen - Logopedie.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

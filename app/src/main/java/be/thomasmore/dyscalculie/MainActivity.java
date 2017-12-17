@@ -8,8 +8,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,9 +65,13 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            replaceFragment(new ThemesFragment());
+            showThemesDialog();
+            //replaceFragment(new ThemesFragment());
             return true;
+        }else if(id == R.id.about){
+            showAboutDialog();
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -133,5 +140,43 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
+
+    public void onClickButtonThemes (View v) {
+        switch (v.getId()) {
+            case R.id.defaultTheme:
+                Utils.changeToTheme(this, Utils.THEME_DEFAULT);
+                break;
+            case R.id.zwartwit:
+                Utils.changeToTheme(this, Utils.THEME_BLACKWHITE);
+                break;
+            case R.id.pastel:
+                Utils.changeToTheme(this, Utils.THEME_PASTEL);
+                break;
+        }
+
+    }
+
+    private void showAboutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        final View viewInflater = inflater.inflate(R.layout.dialog_about, null);
+        builder.setTitle("About")
+                .setView(viewInflater);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showThemesDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        final View viewInflater = inflater.inflate(R.layout.dialog_themes, null);
+        builder.setTitle("Thema's")
+                .setView(viewInflater);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
 }

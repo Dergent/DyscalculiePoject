@@ -1,8 +1,5 @@
 package be.thomasmore.dyscalculie;
 
-/**
- * Created by Zento on 14/12/2017.
- */
 import android.app.Activity;
 import android.content.Intent;
 
@@ -18,11 +15,12 @@ public class Utils {
         activity.startActivity(new Intent(activity, activity.getClass()));
     }
     /** Set the theme of the activity, according to the configuration. */
+
     public static void onActivityCreateSetTheme(Activity activity) {
         switch (sTheme) {
             default:
             case THEME_DEFAULT:
-                activity.setTheme(R.style.AppTheme);
+                 activity.setTheme(R.style.DefaultTheme);
                 break;
             case THEME_BLACKWHITE:
                 activity.setTheme(R.style.ZwartWit);

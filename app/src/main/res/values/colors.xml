@@ -8,4 +8,7 @@
     <!-- zwart wit colors -->
     <color name="ColorZwart">#000000</color>
     <color name="ColorWit">#FFFFFF</color>
+
+    <color name="blauwPastel">#779ecb</color>
+    <color name="ColorGray">#7b7b7b</color>
 </resources>
