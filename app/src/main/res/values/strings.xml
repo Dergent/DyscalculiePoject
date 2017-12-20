@@ -49,8 +49,9 @@
     <!-- For options on main activity-->
     <string name="about">About</string>
     <string name="namen">Developers:\nPieter-jan Dergent &amp; Zento De Houwer\n2017</string>
-    <string name="uitleg">Dit is een app om mensen met dyscalculie te helpen door dagelijkse berekeningen te vergemakkelijken\nGemaakt in opdracht van Thomas More Geel - ITFactory - App development in samenwerking met Thomas More Antwerpen - Logopedie.</string>
-
+    <string name="uitleg">Dit is een app om personen met dyscalculie te helpen door dagelijkse berekeningen te vergemakkelijken\nGemaakt in opdracht van Thomas More Geel - ITFactory - App development in samenwerking met Thomas More Antwerpen - Logopedie.</string>
+    <string name ="contact">Voor eventuele vragen of om bugs te rapporteren, mail ons gerust op het volgende mailadres:</string>
+    <string name="mail">ZentoDeHouwer@gmail.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
