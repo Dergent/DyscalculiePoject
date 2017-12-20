@@ -8,8 +8,17 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/toggleTextToSpeech"
+        android:orderInCategory="100"
+        android:title="Spraak"
+        app:showAsAction="never"
+        />
+
+    <item
         android:id="@+id/about"
         android:orderInCategory="100"
         android:title="@string/about"
         app:showAsAction="never"/>
+
+
 </menu>

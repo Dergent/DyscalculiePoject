@@ -1,5 +1,6 @@
 package be.thomasmore.dyscalculie;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -15,10 +16,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        SharedPreferences pref = this.getSharedPreferences("dyscalculie", 0);
+        if (pref.getBoolean("toggle", false) == false){
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("toggle", false);
+            editor.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,6 +77,8 @@ public class MainActivity extends AppCompatActivity
             return true;
         }else if(id == R.id.about){
             showAboutDialog();
+        }else if(id == R.id.toggleTextToSpeech){
+            showToggleTextToSpeechDialog();
         }
 
         return super.onOptionsItemSelected(item);
@@ -176,6 +185,34 @@ public class MainActivity extends AppCompatActivity
                 .setView(viewInflater);
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void showToggleTextToSpeechDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        final View viewInflater = inflater.inflate(R.layout.dialog_toggle_tts, null);
+        builder.setTitle("Tekst naar spraak")
+                .setView(viewInflater);
+        AlertDialog dialog = builder.create();
+        Switch s = (Switch) viewInflater.findViewById(R.id.toggle);
+        SharedPreferences pref = this.getSharedPreferences("dyscalculie", 0);
+        s.setChecked(pref.getBoolean("toggle", false));
+        dialog.show();
+    }
+
+    public void isToggled(View v){
+        Switch s = v.findViewById(R.id.toggle);
+        SharedPreferences pref = this.getSharedPreferences("dyscalculie", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        if (s.isChecked()){
+            editor.putBoolean("toggle", true);
+        }else{
+            editor.putBoolean("toggle", false);
+        }
+        boolean isToggled = s.isChecked();
+
+        editor.commit();
     }
 
 

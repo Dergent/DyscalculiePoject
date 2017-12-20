@@ -42,6 +42,7 @@ public class PercentenFragment extends Fragment {
         final Button button = view.findViewById(R.id.buttonCalculate);
         final EditText oPrijs = view.findViewById(oorspronkelijkePrijs);
         final EditText percentage = view.findViewById(R.id.percentage);
+        final SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
         textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status){
@@ -73,7 +74,9 @@ public class PercentenFragment extends Fragment {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        textToSpeech.speak(oPrijs.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        if (pref.getBoolean("toggle", false)) {
+                            textToSpeech.speak(oPrijs.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        }
                     }
                 }, 600);
             }
@@ -98,7 +101,9 @@ public class PercentenFragment extends Fragment {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        textToSpeech.speak(percentage.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        if (pref.getBoolean("toggle", false)){
+                            textToSpeech.speak(percentage.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        }
                     }
                 }, 600);
             }
@@ -135,6 +140,7 @@ public class PercentenFragment extends Fragment {
         TextView tOorspronkelijkePrijs = getView().findViewById(oorspronkelijkePrijs);
         TextView tPercentage = getView().findViewById(R.id.percentage);
         TextView tNieuwePrijs = getView().findViewById(nieuwePrijs);
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
 
         try {
             if (!(tOorspronkelijkePrijs.getText().toString().isEmpty() || tPercentage.getText().toString().isEmpty())) {
@@ -144,38 +150,50 @@ public class PercentenFragment extends Fragment {
                     float nieuwePrijs = oorspronkelijkePrijs * (1 - (percentage / 100));
 
                     tNieuwePrijs.setText(String.format("%.2f", nieuwePrijs));
-                    textToSpeech.speak("De nieuwe prijs is " + String.format("%.2f", nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                    if (pref.getBoolean("toggle",false)) {
+                        textToSpeech.speak("De nieuwe prijs is " + String.format("%.2f", nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                    }
 
-                    SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("procent", String.format("%.2f", nieuwePrijs) + " euro");
                     editor.commit();
                 } else {
                     String nieuwePrijs = "Een percentage kan niet meer zijn dan 100";
                     tNieuwePrijs.setText(nieuwePrijs);
-                    textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
             } else {
                 if (tOorspronkelijkePrijs.getText().toString().isEmpty()) {
                     String nieuwePrijs = "Oorspronkelijke prijs is niet ingevuld";
                     tNieuwePrijs.setText(nieuwePrijs);
-                    textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
                 if (tPercentage.getText().toString().isEmpty()) {
                     String nieuwePrijs = "Percentage is niet ingevuld";
                     tNieuwePrijs.setText(nieuwePrijs);
-                    textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
                 if (tOorspronkelijkePrijs.getText().toString().isEmpty() && tPercentage.getText().toString().isEmpty()) {
                     String nieuwePrijs = "De velden zijn niet ingevuld";
                     tNieuwePrijs.setText(nieuwePrijs);
-                    textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
             }
         } catch (NumberFormatException e) {
             String nieuwePrijs = "Enkel nummers invullen alstublieft";
             tNieuwePrijs.setText(nieuwePrijs);
-            textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+            if (pref.getBoolean("toggle", false)){
+                textToSpeech.speak(nieuwePrijs, TextToSpeech.QUEUE_FLUSH, null);
+            }
         }
     }
 
