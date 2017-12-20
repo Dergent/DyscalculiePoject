@@ -40,6 +40,7 @@ public class GeldberekenenFragment extends Fragment {
         final Button button = view.findViewById(R.id.buttonCalculate);
         final EditText teBetalen = view.findViewById(R.id.teBetalen);
         final EditText gegeven = view.findViewById(R.id.gegevenBedrag);
+        final SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
 
         textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -68,10 +69,13 @@ public class GeldberekenenFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 timer = new Timer();
+
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        textToSpeech.speak(teBetalen.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        if(pref.getBoolean("toggle", false)) {
+                            textToSpeech.speak(teBetalen.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        }
                     }
                 }, 600);
             }
@@ -96,7 +100,9 @@ public class GeldberekenenFragment extends Fragment {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        textToSpeech.speak(gegeven.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        if (pref.getBoolean("toggle", false)) {
+                            textToSpeech.speak(gegeven.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                        }
                     }
                 }, 600);
             }
@@ -107,7 +113,9 @@ public class GeldberekenenFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    textToSpeech.speak(gegeven.getText().toString() + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(gegeven.getText().toString() + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
             }
         });
@@ -142,12 +150,12 @@ public class GeldberekenenFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void calculate(View v) {
+        final SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
 
         try {
             TextView tTeBetalen = getView().findViewById(teBetalen);
             TextView tGegevenBedrag = getView().findViewById(R.id.gegevenBedrag);
             TextView tWisselgeld = getView().findViewById(R.id.wisselgeld);
-            SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
             SharedPreferences.Editor editor = pref.edit();
 
             if (!(tTeBetalen.getText().toString().isEmpty() || tGegevenBedrag.getText().toString().isEmpty())){
@@ -157,14 +165,20 @@ public class GeldberekenenFragment extends Fragment {
                     double wisselgeld = gegevenBedrag - teBetalen;
 
                     tWisselgeld.setText(String.format("%.2f", wisselgeld));
-                    textToSpeech.speak("Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
+
+                    if (pref.getBoolean("toggle", false)) {
+                        textToSpeech.speak("Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
+                    }
 
                     editor.putString("geldBerekening", "Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug");
                     editor.commit();
                 } else {
                     double geldTeKort = teBetalen - gegevenBedrag;
                     String teKort = "Je komt: " + String.format("%.2f", geldTeKort) + " euro te kort!";
-                    textToSpeech.speak("Je komt: " + String.format("%.2f", geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
+
+                    if (pref.getBoolean("toggle", false)) {
+                        textToSpeech.speak("Je komt: " + String.format("%.2f", geldTeKort) + " euro te kort!", TextToSpeech.QUEUE_FLUSH, null);
+                    }
                     tWisselgeld.setText(teKort);
 
                     editor.putString("geldBerekening", teKort);
@@ -174,24 +188,36 @@ public class GeldberekenenFragment extends Fragment {
                 if (tTeBetalen.getText().toString().isEmpty()){
                     String error = "Te betalen is niet ingevuld";
                     tWisselgeld.setText(error);
-                    textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
                 if (tGegevenBedrag.getText().toString().isEmpty()){
                     String error = "Gegeven bedrag is niet ingevuld";
                     tWisselgeld.setText(error);
-                    textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
                 if (tTeBetalen.getText().toString().isEmpty() && tGegevenBedrag.getText().toString().isEmpty()){
                     String error = "De velden zijn niet ingevuld";
                     tWisselgeld.setText(error);
-                    textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+
+                    if (pref.getBoolean("toggle", false)){
+                        textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+                    }
                 }
             }
         } catch (NumberFormatException e) {
             TextView tWisselgeld = getView().findViewById(R.id.wisselgeld);
             String error = "Enkel nummers invullen alstublieft";
             tWisselgeld.setText(error);
-            textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+
+            if (pref.getBoolean("toggle", false)){
+                textToSpeech.speak(error, TextToSpeech.QUEUE_FLUSH, null);
+            }
         }
 
     }

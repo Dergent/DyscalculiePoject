@@ -28,6 +28,7 @@ public class TijdBerekenenFragment extends Fragment {
         final Button button = view.findViewById(R.id.buttonCalculate);
         final TimePicker beginTime = view.findViewById(R.id.beginTimePicker);
         final TimePicker endTime = view.findViewById(R.id.endTimePicker);
+        final SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
 
         textToSpeech = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -48,14 +49,18 @@ public class TijdBerekenenFragment extends Fragment {
         beginTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                textToSpeech.speak(hourOfDay + " uur " + minute + " min", TextToSpeech.QUEUE_FLUSH, null);
+                if (pref.getBoolean("toggle", false)) {
+                    textToSpeech.speak(hourOfDay + " uur " + minute + " min", TextToSpeech.QUEUE_FLUSH, null);
+                }
             }
         });
 
         endTime.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener(){
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                textToSpeech.speak(hourOfDay + " uur " + minute + " min", TextToSpeech.QUEUE_FLUSH, null);
+                if (pref.getBoolean("toggle", false)){
+                    textToSpeech.speak(hourOfDay + " uur " + minute + " min", TextToSpeech.QUEUE_FLUSH, null);
+                }
             }
         });
 
@@ -69,6 +74,7 @@ public class TijdBerekenenFragment extends Fragment {
     }
 
     public void calculate(View v) {
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
         TimePicker beginTimePicker = getView().findViewById(R.id.beginTimePicker);
         TimePicker endTimePicker = getView().findViewById(R.id.endTimePicker);
         int hour = 0;
@@ -121,9 +127,11 @@ public class TijdBerekenenFragment extends Fragment {
         }
 
         tijdverschil.setText("Verstreken tijd: " + hour + " uur " + minutes + " min");
-        textToSpeech.speak("Verstreken tijd: " + hour + " uur " + minutes + " min", TextToSpeech.QUEUE_FLUSH, null);
 
-        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+        if (pref.getBoolean("toggle", false)){
+            textToSpeech.speak("Verstreken tijd: " + hour + " uur " + minutes + " min", TextToSpeech.QUEUE_FLUSH, null);
+        }
+
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("tijd", hour + " uur " + minutes + " min");
         editor.commit();

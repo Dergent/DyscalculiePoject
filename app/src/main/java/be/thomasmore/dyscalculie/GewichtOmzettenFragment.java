@@ -128,6 +128,7 @@ public class GewichtOmzettenFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                final SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
                 if (!origineleHoeveelheid.getText().toString().isEmpty()) {
                     final float basis = Float.parseFloat(String.valueOf(origineleHoeveelheid.getText().toString()));
                     switch (spinner.getSelectedItem().toString()) {
@@ -166,11 +167,13 @@ public class GewichtOmzettenFragment extends Fragment {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            textToSpeech.speak(origineleHoeveelheid.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                            if (pref.getBoolean("toggle",false)){
+                                textToSpeech.speak(origineleHoeveelheid.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                            }
                         }
                     }, 600);
 
-                    SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("gewicht",  origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString());
                     editor.commit();
