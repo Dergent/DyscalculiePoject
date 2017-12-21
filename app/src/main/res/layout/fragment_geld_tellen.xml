@@ -29,34 +29,35 @@
                         android:scaleType="fitStart"
                         android:src="@drawable/cent1" />
                     <ImageView
-                        android:id="@+id/plus1"
-                        android:tag="plus1"
+                        android:id="@+id/minus1"
+                        android:tag="minus1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding1cent"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel1cent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus1"
+                        android:layout_toRightOf="@id/minus1"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus1"
-                        android:tag="minus1"
+                        android:id="@+id/plus1"
+                        android:tag="plus1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel1cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
+
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -69,35 +70,37 @@
                         android:paddingLeft="10dp"
                         android:scaleType="fitStart"
                         android:src="@drawable/cent2" />
+
                     <ImageView
-                        android:id="@+id/plus2"
-                        android:tag="plus1"
+                        android:id="@+id/minus2"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:tag="minus1"
                         android:layout_toRightOf="@id/afbeelding2cent"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
+
                     <EditText
                         android:id="@+id/hoeveel2cent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus2"
+                        android:layout_toRightOf="@id/minus2"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus2"
+                        android:id="@+id/plus2"
+                        android:tag="plus1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:tag="minus1"
                         android:layout_toRightOf="@id/hoeveel2cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -110,33 +113,34 @@
                         android:paddingLeft="10dp"
                         android:scaleType="fitStart"
                         android:src="@drawable/cent5" />
+
                     <ImageView
-                        android:id="@+id/plus5"
+                        android:id="@+id/minus5"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding5cent"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel5cent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus5"
+                        android:layout_toRightOf="@id/minus5"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus5"
+                        android:id="@+id/plus5"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel5cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -149,33 +153,35 @@
                         android:paddingLeft="10dp"
                         android:scaleType="fitStart"
                         android:src="@drawable/cent10" />
+
                     <ImageView
-                        android:id="@+id/plus10"
+                        android:id="@+id/minus10"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding10cent"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
+
                     <EditText
                         android:id="@+id/hoeveel10cent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus10"
+                        android:layout_toRightOf="@id/minus10"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus10"
+                        android:id="@+id/plus10"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel10cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -188,33 +194,34 @@
                         android:paddingLeft="10dp"
                         android:scaleType="fitStart"
                         android:src="@drawable/cent20" />
+
                     <ImageView
-                        android:id="@+id/plus20"
+                        android:id="@+id/minus20"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding20cent"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel20cent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus20"
+                        android:layout_toRightOf="@id/minus20"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus20"
+                        android:id="@+id/plus20"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel20cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -228,32 +235,32 @@
                         android:scaleType="fitStart"
                         android:src="@drawable/cent50" />
                     <ImageView
-                        android:id="@+id/plus50"
+                        android:id="@+id/minus50"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding50cent"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel50cent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus50"
+                        android:layout_toRightOf="@id/minus50"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus50"
+                        android:id="@+id/plus50"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel50cent"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -267,32 +274,32 @@
                         android:scaleType="fitStart"
                         android:src="@drawable/euro1" />
                     <ImageView
-                        android:id="@+id/plus1euro"
+                        android:id="@+id/minus1euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding1euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel1euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus1euro"
+                        android:layout_toRightOf="@id/minus1euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus1euro"
+                        android:id="@+id/plus1euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel1euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -306,32 +313,33 @@
                         android:scaleType="fitStart"
                         android:src="@drawable/euro2" />
                     <ImageView
-                        android:id="@+id/plus2euro"
+                        android:id="@+id/minus2euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding2euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel2euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus2euro"
+                        android:layout_toRightOf="@id/minus2euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus2euro"
+                        android:id="@+id/plus2euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel2euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
+
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -346,32 +354,33 @@
                         android:src="@drawable/euro5"
                         android:paddingTop="20dp"/>
                     <ImageView
-                        android:id="@+id/plus5euro"
+                        android:id="@+id/minus5euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding5euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel5euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus5euro"
+                        android:layout_toRightOf="@id/minus5euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus5euro"
+                        android:id="@+id/plus5euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel5euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
+
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -385,33 +394,36 @@
                         android:scaleType="fitStart"
                         android:src="@drawable/euro10"
                         android:paddingTop="20dp"/>
+
                     <ImageView
-                        android:id="@+id/plus10euro"
+                        android:id="@+id/minus10euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding10euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
+
                     <EditText
                         android:id="@+id/hoeveel10euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus10euro"
+                        android:layout_toRightOf="@id/minus10euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
+
                     <ImageView
-                        android:id="@+id/minus10euro"
+                        android:id="@+id/plus10euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel10euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -426,32 +438,32 @@
                         android:src="@drawable/euro20"
                         android:paddingTop="20dp"/>
                     <ImageView
-                        android:id="@+id/plus20euro"
+                        android:id="@+id/minus20euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding20euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel20euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus20euro"
+                        android:layout_toRightOf="@id/minus20euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus20euro"
+                        android:id="@+id/plus20euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel20euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -466,32 +478,32 @@
                         android:src="@drawable/euro50"
                         android:paddingTop="20dp"/>
                     <ImageView
-                        android:id="@+id/plus50euro"
+                        android:id="@+id/minus50euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding50euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel50euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus50euro"
+                        android:layout_toRightOf="@id/minus50euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus50euro"
+                        android:id="@+id/plus50euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel50euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -509,32 +521,32 @@
                         android:layout_alignParentStart="true"
                         android:paddingTop="20dp"/>
                     <ImageView
-                        android:id="@+id/plus100euro"
+                        android:id="@+id/minus100euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding100euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel100euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus100euro"
+                        android:layout_toRightOf="@id/minus100euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus100euro"
+                        android:id="@+id/plus100euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel100euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -549,32 +561,32 @@
                         android:src="@drawable/euro200"
                         android:paddingTop="20dp"/>
                     <ImageView
-                        android:id="@+id/plus200euro"
+                        android:id="@+id/minus200euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding200euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel200euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus200euro"
+                        android:layout_toRightOf="@id/minus200euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus200euro"
+                        android:id="@+id/plus200euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel200euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -589,32 +601,32 @@
                         android:src="@drawable/euro500"
                         android:paddingTop="20dp"/>
                     <ImageView
-                        android:id="@+id/plus500euro"
+                        android:id="@+id/minus500euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/afbeelding500euro"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/plus"
-                        android:onClick="plusOne_onClick"/>
+                        android:src="@drawable/minus"
+                        android:onClick="minusOne_onClick"/>
                     <EditText
                         android:id="@+id/hoeveel500euro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/plus500euro"
+                        android:layout_toRightOf="@id/minus500euro"
                         android:layout_centerVertical="true"
                         android:textSize="35sp"
                         android:text="0"
                         android:inputType="number"
                         android:layout_gravity="center_horizontal"/>
                     <ImageView
-                        android:id="@+id/minus500euro"
+                        android:id="@+id/plus500euro"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/hoeveel500euro"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/minus"
-                        android:onClick="minusOne_onClick"/>
+                        android:paddingLeft="5dp"
+                        android:src="@drawable/plus"
+                        android:onClick="plusOne_onClick"/>
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>
