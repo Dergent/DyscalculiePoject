@@ -1,6 +1,7 @@
 package be.thomasmore.dyscalculie;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        final SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         final TextClock textClock = view.findViewById(R.id.homeClock);
 
@@ -51,7 +53,9 @@ public class HomeFragment extends Fragment {
 
         textClock.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                textToSpeech.speak(textClock.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                if (pref.getBoolean("toggle", false)){
+                    textToSpeech.speak(textClock.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                }
             }
         });
 
