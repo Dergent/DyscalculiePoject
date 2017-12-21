@@ -46,6 +46,7 @@ public class DatumsBerkenen extends Fragment {
         DatePicker beginDatum = getView().findViewById(R.id.beginDatum);
         DatePicker eindDatum = getView().findViewById(R.id.eindDatum);
         TextView textView = getView().findViewById(R.id.resultaat);
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
 
         if (beginDatum.getYear() <= eindDatum.getYear()){
             int maand = 0;
@@ -110,15 +111,21 @@ public class DatumsBerkenen extends Fragment {
                     }
                 }
                 textView.setText("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.");
-                textToSpeech.speak("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.", TextToSpeech.QUEUE_FLUSH, null);
-                SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+
+                if (pref.getBoolean("toggle", false)){
+                    textToSpeech.speak("Verstreken tijd: " + dag + " dagen " + maand + " maanden " + jaar + " jaar.", TextToSpeech.QUEUE_FLUSH, null);
+                }
+
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString("datum", dag + " dagen " + maand + " maanden " + jaar + " jaar.");
                 editor.commit();
             }
         } else {
             textView.setText("De begindatum is voor de einddatum.");
-            textToSpeech.speak("De begindatum is voor de einddatum.", TextToSpeech.QUEUE_FLUSH, null);
+
+            if (pref.getBoolean("toggle", false)){
+                textToSpeech.speak("De begindatum is voor de einddatum.", TextToSpeech.QUEUE_FLUSH, null);
+            }
         }
     }
 
