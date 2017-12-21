@@ -191,6 +191,13 @@ public class AfstandOmzettenFragment extends Fragment {
 
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("afstand",  origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString());
+
+                    editor.putString("afstand", origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString() + " is:\n"
+                            + mm.getText() + " mm\n"
+                            + cm.getText() + " cm\n"
+                            + dm.getText() + " dm\n"
+                            + m.getText() + " m\n"
+                            + km.getText() + " km");
                     editor.commit();
                 }
             }

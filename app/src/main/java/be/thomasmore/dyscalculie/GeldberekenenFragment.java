@@ -170,7 +170,7 @@ public class GeldberekenenFragment extends Fragment {
                         textToSpeech.speak("Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug", TextToSpeech.QUEUE_FLUSH, null);
                     }
 
-                    editor.putString("geldBerekening", "Je krijgt " + String.format("%.2f", wisselgeld) + " euro terug");
+                    editor.putString("geldBerekening", "Gegeven geld " + gegevenBedrag + " te betalen bedrag " + teBetalen + ", geld terug: " + String.format("%.2f", wisselgeld) + " euro");
                     editor.commit();
                 } else {
                     double geldTeKort = teBetalen - gegevenBedrag;
@@ -181,7 +181,7 @@ public class GeldberekenenFragment extends Fragment {
                     }
                     tWisselgeld.setText(teKort);
 
-                    editor.putString("geldBerekening", teKort);
+                    editor.putString("geldBerekening", "Gegeven geld " + gegevenBedrag + " te betalen bedrag " + teBetalen + ", je komt " + teKort + " euro te kort");
                     editor.commit();
                 }
             } else {

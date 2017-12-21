@@ -222,7 +222,11 @@ public class GeldTellenFragment extends Fragment {
                 break;
         }
         editAmount.setText(String.valueOf(newNumber));
-        textToSpeech.speak(editAmount.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+
+        if (pref.getBoolean("toggle", false)) {
+            textToSpeech.speak(editAmount.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 
     public void minusOne_onClick(View v) {
@@ -292,6 +296,7 @@ public class GeldTellenFragment extends Fragment {
                 break;
             case R.id.minus100euro:
                 editAmount = getView().findViewById(R.id.hoeveel100euro);
+                editAmount = getView().findViewById(R.id.hoeveel100euro);
                 number = Integer.parseInt(editAmount.getText().toString());
                 newNumber = calculateNumberMinus(number);
                 break;
@@ -310,7 +315,11 @@ public class GeldTellenFragment extends Fragment {
                 break;
         }
         editAmount.setText(String.valueOf(newNumber));
-        textToSpeech.speak(editAmount.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+
+        if (pref.getBoolean("toggle", false)){
+            textToSpeech.speak(editAmount.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 
     public int calculateNumberMinus(int number) {
@@ -356,11 +365,15 @@ public class GeldTellenFragment extends Fragment {
         EditText euro500 = getView().findViewById(R.id.hoeveel500euro);
         total += Double.parseDouble(euro500.getText().toString())*500;
 
+        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+
         TextView textView = getView().findViewById(R.id.totaal);
         textView.setText(String.format("%.2f", total));
-        textToSpeech.speak(String.format("%.2f", total) + " euro", TextToSpeech.QUEUE_FLUSH, null);
 
-        SharedPreferences pref = getContext().getSharedPreferences("dyscalculie", 0);
+        if (pref.getBoolean("toggle", false)) {
+            textToSpeech.speak(String.format("%.2f", total) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+        }
+
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("geldTellen", "totaal is " + String.format("%.2f", total) + " euro");
         editor.commit();

@@ -175,7 +175,11 @@ public class GewichtOmzettenFragment extends Fragment {
 
 
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("gewicht",  origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString());
+                    editor.putString("gewicht", origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString() + " is:\n"
+                                            + mg.getText() + " mg\n"
+                                            + g.getText() + " g\n"
+                                            + kg.getText() + " kg\n"
+                                            + ton.getText() + " ton\n");
                     editor.commit();
                 }
             }

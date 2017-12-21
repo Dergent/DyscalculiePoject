@@ -133,7 +133,7 @@ public class TijdBerekenenFragment extends Fragment {
         }
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("tijd", hour + " uur " + minutes + " min");
+        editor.putString("tijd", "Begin tijd " + beginHour + ":" + beginMinutes + ", eind tijd:" + endHour + ":" + endMinutes + ", tijd tussen: " + hour + " uur " + minutes + " minuten");
         editor.commit();
     }
 

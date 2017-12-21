@@ -171,7 +171,12 @@ public class VolumeFragment extends Fragment {
                     }, 600);
 
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("volume",  origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString());
+                    editor.putString("volume", origineleHoeveelheid.getText().toString() + " " + spinner.getSelectedItem().toString() + " is:\n"
+                            + ml.getText() + " ml\n"
+                            + cl.getText() + " cl\n"
+                            + dl.getText() + " dl\n"
+                            + liter.getText() + " l\n");
+
                     editor.commit();
                 }
             }

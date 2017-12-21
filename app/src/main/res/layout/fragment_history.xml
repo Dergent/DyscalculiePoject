@@ -2,17 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.thomasmore.dyscalculie.HomeFragment">
-
+    tools:context="be.thomasmore.dyscalculie.HomeFragment"
+    android:paddingTop="40dp">
 
     <LinearLayout
-        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
-
 
 </FrameLayout>

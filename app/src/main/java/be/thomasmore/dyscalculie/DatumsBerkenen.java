@@ -117,7 +117,7 @@ public class DatumsBerkenen extends Fragment {
                 }
 
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putString("datum", dag + " dagen " + maand + " maanden " + jaar + " jaar.");
+                editor.putString("datum", "Van " + beginDatum.getDayOfMonth() + "/" + beginDatum.getMonth() + "/" + beginDatum.getYear() + " tot " + eindDatum.getDayOfMonth() + "/" + eindDatum.getMonth() + "/" + eindDatum.getYear() + " is " + dag + " dagen " + maand + " maanden " + jaar + " jaar.");
                 editor.commit();
             }
         } else {

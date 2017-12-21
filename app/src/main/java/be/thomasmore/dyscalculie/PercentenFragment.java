@@ -156,7 +156,7 @@ public class PercentenFragment extends Fragment {
 
 
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("procent", String.format("%.2f", nieuwePrijs) + " euro");
+                    editor.putString("procent", "Het oorspronkelijke bedrag: " + oorspronkelijkePrijs + ", het percentage: " + percentage + "%, nieuwe prijs: " + nieuwePrijs + String.format("%.2f", nieuwePrijs) + " euro");
                     editor.commit();
                 } else {
                     String nieuwePrijs = "Een percentage kan niet meer zijn dan 100";
