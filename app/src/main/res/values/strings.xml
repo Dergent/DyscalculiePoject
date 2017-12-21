@@ -13,7 +13,7 @@
     <string name="tijdBerekenen">Tijd berekenen</string>
     <string name="datumsBerekenen">Datums berekenen</string>
     <string name="gewichtOmzetten">Gewicht Omzetten</string>
-    <string name="volumeOmzetten">Volume omzetten</string>
+    <string name="volumeOmzetten">Inhoud omzetten</string>
     <string name="afstandenOmzetten">Afstanden omzetten</string>
 
     <!-- For weight -->
@@ -48,6 +48,8 @@
 
     <!-- For options on main activity-->
     <string name="about">About</string>
+    <string name="spraak">Spraak</string>
+    <string name="spraakToggle">Spraak</string>
     <string name="namen">Developers:\nPieter-jan Dergent &amp; Zento De Houwer\n2017</string>
     <string name="uitleg">Dit is een app om personen met dyscalculie te helpen door dagelijkse berekeningen te vergemakkelijken\nGemaakt in opdracht van Thomas More Geel - ITFactory - App development in samenwerking met Thomas More Antwerpen - Logopedie.</string>
     <string name ="contact">Voor eventuele vragen of om bugs te rapporteren, mail ons gerust op het volgende mailadres:</string>
