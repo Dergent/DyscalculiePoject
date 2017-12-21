@@ -10,7 +10,7 @@
     <item
         android:id="@+id/toggleTextToSpeech"
         android:orderInCategory="100"
-        android:title="Spraak"
+        android:title="@string/spraak"
         app:showAsAction="never"
         />
 
