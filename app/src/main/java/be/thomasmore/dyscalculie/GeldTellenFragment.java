@@ -371,7 +371,7 @@ public class GeldTellenFragment extends Fragment {
         textView.setText(String.format("%.2f", total));
 
         if (pref.getBoolean("toggle", false)) {
-            textToSpeech.speak(String.format("%.2f", total) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+            textToSpeech.speak("€" + String.format("%.2f", total), TextToSpeech.QUEUE_FLUSH, null);
         }
 
         SharedPreferences.Editor editor = pref.edit();

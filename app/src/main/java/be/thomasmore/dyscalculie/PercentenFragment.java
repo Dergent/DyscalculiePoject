@@ -151,7 +151,7 @@ public class PercentenFragment extends Fragment {
 
                     tNieuwePrijs.setText(String.format("%.2f", nieuwePrijs));
                     if (pref.getBoolean("toggle",false)) {
-                        textToSpeech.speak("De nieuwe prijs is " + String.format("%.2f", nieuwePrijs) + " euro", TextToSpeech.QUEUE_FLUSH, null);
+                        textToSpeech.speak("De nieuwe prijs is " + "€" + String.format("%.2f", nieuwePrijs), TextToSpeech.QUEUE_FLUSH, null);
                     }
 
 
